@@ -1,0 +1,19 @@
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+$color-green: #01595C;
+
+$nucleo-primary: mat.define-palette(mat.$indigo-palette);
+$nucleo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$nucleo-warn: mat.define-palette(mat.$red-palette);
+
+$nucleo-theme: mat.define-light-theme((
+  color: (
+    primary: $nucleo-primary,
+    accent: $nucleo-accent,
+    warn: $nucleo-warn,
+    primaryGreen: $color-green
+  )
+));
+@include mat.all-component-themes($nucleo-theme);

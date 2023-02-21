@@ -1,0 +1,51 @@
+<mat-nav-list disableRipple>
+  <mat-list-item class="menu avatar">
+    <button mat-button class="profile" disableRipple>
+      <img src="assets/photos/user.jpg" />
+    </button>
+  </mat-list-item>
+  <mat-list-item class="menu" routerLinkActive="activeLink" >
+    <a routerLink="/company">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/setting.svg" />
+        <span>Admin.</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item class="menu" >
+    <a routerLink="/user">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/user.svg" />
+        <span>Usuarios</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item class="menu" >
+    <a routerLink="/vcard">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/card.svg" />
+        <span>vCard</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item class="menu" >
+    <a routerLink="/check">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/check.svg" />
+        <span>Check</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item class="menu" >
+    <a routerLink="/state">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/state.svg" />
+        <span>Estados</span>
+      </button>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

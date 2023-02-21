@@ -1,0 +1,23 @@
+:host {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .contenedor {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  h2 {
+    color: white;
+  }
+  
