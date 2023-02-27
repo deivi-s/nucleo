@@ -1,0 +1,33 @@
+h2{
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 1.25rem !important;
+    margin-left: 2px;
+}
+
+::placeholder {
+    font-family: "Montserrat Regular";
+    color: #657685 !important;
+    font-size: 0.8rem !important;
+}
+
+label{
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    text-align: right;
+}
+
+input {
+    font-family: "Montserrat Regular";
+    color: black !important;
+    font-size: 0.85rem !important;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #01595c;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgb(13 110 253 / 15%);
+}

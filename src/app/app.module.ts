@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { FormCompanyComponent } from './modules/company/interfaces/form-company/form-company.component';
 import { ListCompanyComponent } from './modules/company/interfaces/list-company/list-company.component';
 import { CompanyComponent } from './modules/company/interfaces/company/company.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Paginator } from './shared/classes/paginator';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -38,7 +40,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     SharedModule
   ],
-  providers: [],
+  providers: [ { provide: MatPaginatorIntl, useClass: Paginator },],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

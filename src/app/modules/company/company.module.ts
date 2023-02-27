@@ -7,6 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import { SharedModule } from '../../shared/shared.module';
 import { CompanyRoutingModule } from './company-routing.module';
+import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { CompanyRoutingModule } from './company-routing.module';
     CompanyRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class CompanyModule { }

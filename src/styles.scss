@@ -154,3 +154,41 @@ body {
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
 }
+
+.mat-column-empresa {
+  min-width: 14rem !important;
+}
+
+.mat-column-fecha {
+  min-width: 4rem !important;
+}
+
+.mat-column-estado {
+  min-width: 4rem !important;
+}
+
+.mat-column-usuarios {
+  min-width: 4rem !important;
+}
+
+.mat-column-modulos {
+  min-width: 4rem !important;
+}
+
+th, td{
+  font-family: "Montserrat Medium";
+  font-size: 13px !important;
+  color: #657685 !important;
+}
+
+nucleo-container .container{
+  background: #f7f9f9 !important;
+}
+
+.heightMaxPerfectScrollBar {
+  height: 90% !important;
+}
+
+.footer {
+  padding: 10px 0;
+}
