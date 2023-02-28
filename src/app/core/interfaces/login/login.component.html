@@ -1,4 +1,4 @@
-<!-- <div class="col-12" id="container">
+<div class="col-12" id="container">
   <div class="col-md-4 offset-md-4 col-md-4 offset-md-4 col-sm-12">
     <div class="logo">
       <img src="assets/logo/logo.svg" />
@@ -10,7 +10,7 @@
           Para iniciar sesión ingresa tu correo y <br />
           la contraseña entregada por tu empleador.
         </h2>
-        <form method="POST" class="my-login-validation" novalidate="">
+        <form class="my-login-validation" novalidate="">
           <div class="form-group">
             <label for="email">Correo electrónico</label>
             <input id="email" type="email" class="form-control" name="email" value="" required="" autofocus="" />
@@ -24,9 +24,9 @@
                 style="padding-right: 60px" />
               <div class="invalid-feedback">Password is required</div>
               <input type="hidden" id="passeye-0" />
-               <div class="btn btn-primary btn-sm" id="passeye-toggle-0"
+             <!--   <div class="btn btn-primary btn-sm" id="passeye-toggle-0"
                                     style="position: absolute; right: 10px; top: 7px; padding: 2px 7px; font-size: 12px; cursor: pointer;">
-                                    Mostrar</div> 
+                                    Mostrar</div>  -->
             </div>
             <div class="invalid-feedback">Password is required</div>
           </div>
@@ -38,7 +38,7 @@
           </div>
 
           <div class="form-group m-0">
-            <button type="submit" class="btn btn-primary btn-login col-12">
+            <button type="button" class="btn btn-primary btn-login col-12" (click)="validar()">
               INICIAR SESIÓN
             </button>
           </div>
@@ -48,7 +48,7 @@
   </div>
 
 
-</div> -->
+</div>
 
 
 <div class="container-app">

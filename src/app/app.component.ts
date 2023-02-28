@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ILayout } from './config/interfaces/layout.interface';
+import { LayoutService } from './config/services/layout.service';
 
 @Component({
   selector: 'nucleo-root',
@@ -8,4 +10,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'nucleo';
   isLoading = false;
+
+  configLayout !: ILayout;
+
+  constructor(private layoutService: LayoutService) {
+    layoutService.configuration.subscribe((config: ILayout) => {
+      this.configLayout = config;
+    });
+  }
 }

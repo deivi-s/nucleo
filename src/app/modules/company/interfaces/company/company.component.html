@@ -1,10 +1,10 @@
 <nucleo-title title="Empresas" class="title">
-    <button mat-raised-button color="primary">
+    <button type="button" mat-raised-button color="primary" (click)="gotToCreateCompany()">
         <span>Crear Empresa</span>
     </button>
 </nucleo-title>
 
 <mat-tab-group>
     <mat-tab label="Empresas"> <nucleo-list-company></nucleo-list-company></mat-tab>
-    <mat-tab label="Dashboard"><nucleo-form-company></nucleo-form-company></mat-tab>
+    <mat-tab label="Dashboard"><nucleo-dashboard></nucleo-dashboard></mat-tab>
 </mat-tab-group>

@@ -1,4 +1,4 @@
-h2{
+h2 {
     font-family: "Montserrat Bold";
     color: #01595C !important;
     font-size: 1.25rem !important;
@@ -11,7 +11,7 @@ h2{
     font-size: 0.8rem !important;
 }
 
-label{
+label {
     font-family: "Montserrat Bold";
     color: #01595C !important;
     font-size: 0.9rem !important;
@@ -30,4 +30,75 @@ input {
     border-color: #01595c;
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgb(13 110 253 / 15%);
+}
+
+.mat-form-field {
+    margin: 0;
+    
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+
+.mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+}
+
+.mat-toolbar-single-row button {
+    width: 200px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+#uploadFile {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+}
+
+::ng-deep.mat-form-field-ripple {
+    background-color: #01595c !important;
+}
+
+.input-file {
+    padding-left: 10px;
+}
+
+.card-module{
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(2, 139, 126, 0.54)
+}
+
+h3 {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    margin-left: 2px;
+}
+
+img{
+    width: 60px;
+    padding-right: 10px;
+}
+
+.module{
+    padding-top: 20px;
+}
+
+.module-plan h3{
+    width: 120px;
+}
+
+pt-5{
+    margin-top: 15px !important;
 }

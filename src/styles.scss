@@ -175,13 +175,14 @@ body {
   min-width: 4rem !important;
 }
 
-th, td{
+th,
+td {
   font-family: "Montserrat Medium";
   font-size: 13px !important;
   color: #657685 !important;
 }
 
-nucleo-container .container{
+nucleo-container .container {
   background: #f7f9f9 !important;
 }
 
@@ -191,4 +192,83 @@ nucleo-container .container{
 
 .footer {
   padding: 10px 0;
+}
+
+.mat-form-field-infix {
+  border-top: 0px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-toolbar-single-row {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.mat-form-field-infix {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.btn-upload-file span {
+  height: 30px !important;
+}
+
+.btn-upload-file .mat-button-wrapper {
+  justify-content: center !important;
+}
+
+.estado .mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+
+.estado .mat-form-field-flex {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  padding-left: 10px !important;
+  padding-right: 5px !important;
+}
+
+.estado .mat-select-arrow-wrapper {
+  transform: translateY(-0%) !important;
+}
+
+.estado .mat-select-value {
+  font-family: "Montserrat Medium";
+  font-size: 13px !important;
+  color: #657685 !important;
+}
+
+.mat-option-text {
+  font-family: "Montserrat Medium" !important;
+  font-size: 13px !important;
+}
+
+ul, .mat-checkbox-label {
+  list-style: none !important;
+  font-family: "Montserrat Medium" !important;
+  font-size: 14px;
+}
+
+.list-module li{
+  padding-bottom: 10px;
+}
+.list-module ul{
+  padding-top: 10px;
+}
+
+.title-module .mat-checkbox-layout .mat-checkbox-label{
+  font-size: 16px !important;
+  color:#01595C !important;
+  font-family: "Montserrat Bold" !important;
+}
+
+.mat-card{
+  padding: 30px !important;
 }
