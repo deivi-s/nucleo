@@ -34,7 +34,7 @@ input {
 
 .mat-form-field {
     margin: 0;
-    
+
     border: 1px solid #ced4da;
     border-radius: 8px;
 }
@@ -71,7 +71,7 @@ input {
     padding-left: 10px;
 }
 
-.card-module{
+.card-module {
     padding: 25px;
     border-radius: 8px;
     border: 1px solid rgba(2, 139, 126, 0.54)
@@ -86,19 +86,73 @@ h3 {
     margin-left: 2px;
 }
 
-img{
+h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    margin-left: 2px;
+}
+
+img {
     width: 60px;
     padding-right: 10px;
 }
 
-.module{
+.module {
     padding-top: 20px;
 }
 
-.module-plan h3{
+.module-plan h3 {
     width: 120px;
 }
 
-pt-5{
+pt-5 {
     margin-top: 15px !important;
 }
+
+.icon-display {
+    transform: scale(2);
+    color: rgba(101, 118, 133, 0.185);
+}
+
+.btn-add{
+    padding-bottom: 0px;
+    background: #01595c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 13px;
+}
+
+.btn-add .mat-icon{
+    padding-top: 3px;
+}
+
+.min-max{
+    padding-bottom: 5px;
+}
+
+.min-max .max, .min-max .min{
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.9rem !important;
+    margin-right: 4px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.min-max .max-un, .min-max .min-un{
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.9rem !important;
+    margin-left: 4px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DashboardComponent } from './interfaces/dashboard/dashboard.component';
 import { NewCompanyComponent } from './interfaces/new-company/new-company.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewCompanyComponent } from './interfaces/new-company/new-company.compon
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
   ]
 })
 export class CompanyModule { }

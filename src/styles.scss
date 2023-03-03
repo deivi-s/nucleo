@@ -250,25 +250,42 @@ nucleo-container .container {
   font-size: 13px !important;
 }
 
-ul, .mat-checkbox-label {
+ul,
+.mat-checkbox-label {
   list-style: none !important;
   font-family: "Montserrat Medium" !important;
   font-size: 14px;
 }
 
-.list-module li{
+.list-module li {
   padding-bottom: 10px;
 }
-.list-module ul{
+
+.list-module ul {
   padding-top: 10px;
 }
 
-.title-module .mat-checkbox-layout .mat-checkbox-label{
+.title-module .mat-checkbox-layout .mat-checkbox-label {
   font-size: 16px !important;
-  color:#01595C !important;
+  color: #01595C !important;
   font-family: "Montserrat Bold" !important;
 }
 
-.mat-card{
+.mat-card {
   padding: 30px !important;
+}
+
+.card-expansion .mat-card {
+  padding: 0px !important;
+  background: transparent !important;
+  border: none;
+}
+
+/* .ng-star-inserted{
+  padding-bottom: 30px;
+}*/
+
+.card-expansion .mat-card {
+  box-shadow: none !important;
+  ;
 }

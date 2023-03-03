@@ -18,11 +18,12 @@ export class FormCompanyComponent implements OnInit {
   @ViewChild('fileInput') fileInput !: ElementRef;
   fileAttr = 'Cargar archivo';
 
-  task: Task = {
+  moduleCheck: Task = {
     name: 'Módulo Check',
     completed: false,
     color: 'primary',
     subtasks: [
+      {name: 'Check creados', completed: false, color: 'primary'},
       {name: 'Configuración', completed: false, color: 'primary'},
       {name: 'Plantillas', completed: false, color: 'primary'},
       {name: 'Dashboard', completed: false, color: 'primary'},
@@ -30,31 +31,65 @@ export class FormCompanyComponent implements OnInit {
     ],
   };
 
+  moduleState: Task = {
+    name: 'Módulo Estados',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      {name: 'Resumen', completed: false, color: 'primary'},
+      {name: 'Procesos', completed: false, color: 'primary'},
+      {name: 'Carta Gantt', completed: false, color: 'primary'},
+      {name: 'Reportes', completed: false, color: 'primary'},
+      {name: 'Información Base', completed: false, color: 'primary'},
+    ],
+  };
+
   allComplete: boolean = false;
+  allCompleteState: boolean = false;
+  panelOpenState = false;
+
+  list : any = [0,1];
 
   constructor() { }
 
   updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.allComplete = this.moduleCheck.subtasks != null && this.moduleCheck.subtasks.every(t => t.completed);
   }
 
+  updateAllCompleteState() {
+    this.allCompleteState = this.moduleState.subtasks != null && this.moduleState.subtasks.every(t => t.completed);
+  }
+
+
+
   someComplete(): boolean {
-    if (this.task.subtasks == null) {
+    if (this.moduleCheck.subtasks == null) {
       return false;
     }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    return this.moduleCheck.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  }
+
+  someCompleteState(): boolean {
+    if (this.moduleState.subtasks == null) {
+      return false;
+    }
+    return this.moduleState.subtasks.filter(t => t.completed).length > 0 && !this.allCompleteState;
   }
 
   setAll(completed: boolean) {
     this.allComplete = completed;
-    if (this.task.subtasks == null) {
+    if (this.moduleCheck.subtasks == null) {
       return;
     }
-    this.task.subtasks.forEach(t => (t.completed = completed));
+    this.moduleCheck.subtasks.forEach(t => (t.completed = completed));
   }
 
-
-  ngOnInit(): void {
+  setAllState(completed: boolean) {
+    this.allCompleteState = completed;
+    if (this.moduleState.subtasks == null) {
+      return;
+    }
+    this.moduleState.subtasks.forEach(t => (t.completed = completed));
   }
 
   uploadFileEvt(imgFile: any) {
@@ -76,6 +111,9 @@ export class FormCompanyComponent implements OnInit {
     } else {
       this.fileAttr = 'Cargar archivo';
     }
+  }
+
+  ngOnInit(): void {
   }
 
 }
