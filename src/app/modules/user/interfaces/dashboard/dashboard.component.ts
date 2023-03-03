@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
       /*   labels: ['Check', 'Avances'], */
         datasets: [
           {
-         
+
             data: [30,70],
             backgroundColor: [
               '#F2B600',
@@ -45,5 +45,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

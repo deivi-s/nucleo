@@ -1,0 +1,15 @@
+<nucleo-title title="Usuarios" class="title">
+  <button type="button" mat-raised-button color="primary"  class="mr-5">
+    <span>Carga masiva</span>
+</button>
+<button type="button" mat-raised-button color="primary" (click)="gotToCreateUser()">
+    <span>Crear usuario</span>
+</button>
+</nucleo-title>
+
+<mat-tab-group>
+  <mat-tab label="Usuarios"><nucleo-list-user></nucleo-list-user></mat-tab>
+  <mat-tab label="Dashboard"><nucleo-dashboard></nucleo-dashboard></mat-tab>
+  <mat-tab label="Reportes"><nucleo-reporte-user></nucleo-reporte-user></mat-tab>
+  <mat-tab label="Super Administrador"></mat-tab>
+</mat-tab-group>

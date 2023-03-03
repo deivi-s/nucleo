@@ -1,0 +1,93 @@
+<nucleo-card>
+  <div fxLayout fxLayoutAlign="space-between center" class="">
+    <h2>Seleccione reporte </h2>
+  </div>
+
+
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Empresa:</label>
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Seleccionar empresa</mat-label>
+            <mat-select matNativeControl [value]="'1'">
+              <mat-option value="activo" value="1">Empresa 1</mat-option>
+              <mat-option value="inactivo" value="0">Empresa 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Sucursal:</label>
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Seleccionar sucursal</mat-label>
+            <mat-select matNativeControl [value]="'1'">
+              <mat-option value="activo" value="1">Sucursal 1</mat-option>
+              <mat-option value="inactivo" value="0">Sucursal 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Proyecto:</label>
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Seleccionar proyecto</mat-label>
+            <mat-select matNativeControl [value]="'1'">
+              <mat-option value="activo" value="1">Proyecto 1</mat-option>
+              <mat-option value="inactivo" value="0">Proyecto 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Cargo:</label>
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Seleccionar cargo</mat-label>
+            <mat-select matNativeControl [value]="'1'">
+              <mat-option value="activo" value="1">Cargo 1</mat-option>
+              <mat-option value="inactivo" value="0">Cargo 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Cuadrilla:</label>
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Seleccionar cuadrilla</mat-label>
+            <mat-select matNativeControl [value]="'1'">
+              <mat-option value="activo" value="1">Cuadrilla 1</mat-option>
+              <mat-option value="inactivo" value="0">Cuadrilla 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-3 estado">
+        <label for="requiredText" class="col-sm-2 col-form-label">Rut:</label>
+        <div class="col-sm-12">
+          <mat-form-field>
+            <mat-label>Ingrese los rut por salto de página</mat-label>
+            <textarea matInput formControlName="rut" matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=30 rows="7" cols="30"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="form-group row mb-2">
+      <div class="col-sm-2">
+        <button type="button" mat-raised-button color="primary" class="btn-save">
+          <span>Descargar Excel</span>
+        </button>
+      </div>
+    </div>
+
+
+</nucleo-card>

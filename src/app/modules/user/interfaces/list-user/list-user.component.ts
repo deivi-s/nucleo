@@ -12,61 +12,31 @@ export class ListUserComponent implements OnInit {
   pageSize = 10;
 
   metaData: MetaData[] = [
-    { field: 'empresa', title: 'Empresa' },
-    { field: 'fecha', title: 'Fecha de ingreso' },
-    { field: 'estado', title: 'Estado' },
-    { field: 'usuarios', title: 'Usuarios' },
-    { field: 'modulo', title: 'Módulos' },
+    { field: 'nombre', title: 'Nombre' },
+    { field: 'apellido', title: 'Apellido' },
+    { field: 'rut', title: 'Rut' },
+    { field: 'correo', title: 'Correo' },
+    { field: 'sucursal', title: 'Sucursal' },
   ];
-
   dataSource: any = [{
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
+    nombre: 'Deivi',
+    apellido: 'Arocutipa',
+    rut: '00.000.000-0',
+    correo: 'Contacto.apellido@empresa.com',
+    sucursal: 'Chile'
+  },
+  {
+    nombre: 'Deivi',
+    apellido: 'Arocutipa',
+    rut: '00.000.000-0',
+    correo: 'Contacto.apellido@empresa.com',
+    sucursal: 'Chile'
   }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
-  }, {
-    empresa: 'Empresa 1',
-    fecha: '01 - 01 -2023',
-    estado: 'Activo',
-    usuarios: '1.500',
-    modulo: '3'
+    nombre: 'Deivi',
+    apellido: 'Arocutipa',
+    rut: '00.000.000-0',
+    correo: 'Contacto.apellido@empresa.com',
+    sucursal: 'Chile'
   }];
 
   constructor() { }

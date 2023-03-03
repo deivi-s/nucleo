@@ -24,6 +24,7 @@ input {
   font-size: 0.80rem !important;
 }
 
+
 .form-control:focus {
   color: #212529;
   background-color: #fff;
@@ -156,4 +157,25 @@ pt-5 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sub-title span {
+  font-family: "Montserrat Regular";
+  color: #747474 !important;
+  font-size: 0.9rem !important;
+  margin-left: 20px;
+}
+
+.span-radio {
+  font-family: "Montserrat Regular";
+  color: #747474 !important;
+  font-size: 0.9rem !important;
+  text-align: left;
+  margin-left: 26px;
+  display: block;
+}
+
+
+.btn-save {
+  margin-left: 3px;
 }

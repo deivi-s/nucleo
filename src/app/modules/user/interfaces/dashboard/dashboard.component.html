@@ -1,122 +1,126 @@
-<nucleo-title title="Usuarios" class="title">
-    <button type="button" mat-raised-button color="primary"  class="mr-5">
-        <span>Carga masiva</span>
-    </button>
-    <button type="button" mat-raised-button color="primary">
-        <span>Crear usuario</span>
-    </button>
+<div class="container" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex="100%">
+    <div class="row mt-3">
+      <div class="col-3">
+        <div class="resume p-4">
+          <div class="holding mb-4">
+            <div>
+              <h2>Holding</h2>
+            </div>
+            <div fxLayout>
+              <img src="assets/icons/company/Holding.svg" alt="">
+              <span class="resumen-numbers">0</span>
+            </div>
+            <span>Holding creados</span>
+            <hr>
+          </div>
+          <div class="Building mb-4">
+            <div>
+              <h2>Empresas</h2>
+            </div>
+            <div fxLayout>
+              <img src="assets/icons/company/Building.svg" alt="">
+              <span class="resumen-numbers">15</span>
+            </div>
+            <span>Empresas creados</span>
+            <hr>
+          </div>
+          <div class="Offices mb-4">
+            <div>
+              <h2>Sucursales</h2>
+            </div>
+            <div fxLayout>
+              <img src="assets/icons/company/Sucursal.svg" alt="">
+              <span class="resumen-numbers">6</span>
+            </div>
+            <span>Sucursales creadas</span>
+            <hr>
+          </div>
+          <div class="Project mb-4">
+            <div>
+              <h2>Proyectos</h2>
+            </div>
+            <div fxLayout>
+              <img src="assets/icons/company/Group.svg" alt="">
+              <span class="resumen-numbers">13</span>
+            </div>
+            <span>Proyectos creados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="resume p-4">
+          <div class="holding mb-4 pb-4">
+            <div class="mb-4">
+              <h2>Usuarios totales</h2>
+            </div>
+            <div fxLayout>
+              <img src="assets/icons/company/Usuario.svg" alt="">
+              <span class="resumen-numbers">2.000</span>
+            </div>
+            <span class="pb-5">Usuarios registrados</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col-6">
+        <div class="resume p-4">
+          <div class="row">
+            <div class="col-8">
+              <div class="mb-4">
+                <h2>Módulos por empresa</h2>
+              </div>
+              <div class="row">
+                <div class="col-6 mb-3">
+                  <div fxLayout>
+                    <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <div fxLayout>
+                    <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <div fxLayout>
+                    <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <div fxLayout>
+                    <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <canvas #doughnutCanvas2 class="canvas2"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<!-- <nucleo-title title="Usuarios" class="title">
+  <button type="button" mat-raised-button color="primary" class="mr-5">
+    <span>Carga masiva</span>
+  </button>
+  <button type="button" mat-raised-button color="primary">
+    <span>Crear usuario</span>
+  </button>
 </nucleo-title>
 
 <mat-tab-group>
-    <mat-tab label="Usuarios"><nucleo-list-user></nucleo-list-user></mat-tab>
-    <mat-tab label="Dashboard"><div class="container" fxLayout fxLayoutAlign="center">
-        <mat-card fxFlex="100%">
-            <div class="row mt-3">
-                <div class="col-3">
-                    <div class="resume p-4">
-                        <div class="holding mb-4">
-                            <div>
-                                <h2>Holding</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Holding.svg" alt="">
-                                <span class="resumen-numbers">0</span>
-                            </div>
-                            <span>Holding creados</span>
-                            <hr>
-                        </div>
-                        <div class="Building mb-4">
-                            <div>
-                                <h2>Empresas</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Building.svg" alt="">
-                                <span class="resumen-numbers">15</span>
-                            </div>
-                            <span>Empresas creados</span>
-                            <hr>
-                        </div>
-                        <div class="Offices mb-4">
-                            <div>
-                                <h2>Sucursales</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Sucursal.svg" alt="">
-                                <span class="resumen-numbers">6</span>
-                            </div>
-                            <span>Sucursales creadas</span>
-                            <hr>
-                        </div>
-                        <div class="Project mb-4">
-                            <div>
-                                <h2>Proyectos</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Group.svg" alt="">
-                                <span class="resumen-numbers">13</span>
-                            </div>
-                            <span>Proyectos creados</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-3">
-                    <div class="resume p-4">
-                        <div class="holding mb-4 pb-4">
-                            <div class="mb-4">
-                                <h2>Usuarios totales</h2>
-                            </div>
-                            <div fxLayout >
-                                <img src="assets/icons/company/Usuario.svg" alt="">
-                                <span class="resumen-numbers">2.000</span>
-                            </div>
-                            <span class="pb-5">Usuarios registrados</span>
-                        </div>
-                    </div>
-    
-                </div>
-    
-    
-                <div class="col-6">
-                    <div class="resume p-4">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="mb-4">
-                                    <h2>Módulos por empresa</h2>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <canvas #doughnutCanvas2 class="canvas2"></canvas>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-        </mat-card>
-    </div></mat-tab>
-    <mat-tab label="Reportes"></mat-tab>
-    <mat-tab label="Super administrador"></mat-tab>
-</mat-tab-group>
+  <mat-tab label="Usuarios"><nucleo-list-user></nucleo-list-user></mat-tab>
+  <mat-tab label="Dashboard">
+
+  </mat-tab>
+  <mat-tab label="Reportes"></mat-tab>
+  <mat-tab label="Super administrador"></mat-tab>
+</mat-tab-group> -->

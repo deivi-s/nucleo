@@ -1,0 +1,113 @@
+<nucleo-card>
+  <div fxLayout fxLayoutAlign="space-between center" class="">
+    <h2>1. Datos Personales</h2>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+    <span>Complete los campos con la información indicada</span>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Nombre:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Nombre">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Apellidos:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Apellidos"><!--
+              <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Rut:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Rut">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Email:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Email">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Telefono:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Telefono"><!--
+            <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Contacto de emergencia:</label>
+        <div class="col-sm-8">
+          <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+            placeholder="Ingresar Contacto de emergencia">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="requiredText" class="col-sm-3 col-form-label">Foto de perfil:</label>
+        <div class="col-sm-8">
+          <mat-form-field>
+            <div>
+              <mat-toolbar>
+                <button mat-flat-button color="primary" mat-raised-button class="btn-upload-file">Cargar
+                  archivo</button>
+                <input class="input-file" matInput [(ngModel)]="fileAttr" readonly name="name" />
+              </mat-toolbar>
+              <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple" accept="image/*"
+                (change)="uploadFileEvt($event)" />
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</nucleo-card>
+<nucleo-card>
+  <div fxLayout fxLayoutAlign="space-between center" class="">
+    <h2>2. Contraseña </h2>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-4">
+    <span>Seleccione el tipo de contraseña para los nusuarios.</span>
+  </div>
+
+
+
+  <div class="form-group row mb-2">
+    <div class="col-sm-8">
+      <mat-radio-group aria-label="AASSS" aria-labelledby="AASSS">
+       <div class="m-3">
+        <mat-radio-button value="2" color="primary">RUT</mat-radio-button><br>
+        <span class="span-radio">El rut de cada usuario se usa como contraseña <br>(Sin punto ni guón). </span>
+       </div>
+       <div class="m-3">
+        <mat-radio-button value="1" checked="true" color="primary">PIN</mat-radio-button><br>
+        <span class="span-radio">PIN único para todos los nuevos usuarios <br>definidos por el administrador.</span>
+       </div>
+
+      </mat-radio-group>
+    </div>
+  </div>
+
+
+</nucleo-card>
+<div style="float: right;" class="p-5 mb-5">
+  <button type="button" mat-raised-button color="warn">
+    <span>Cancelar</span>
+  </button>
+  <button type="button" mat-raised-button color="primary" class="btn-save">
+    <span>Guardar</span>
+  </button>
+</div>

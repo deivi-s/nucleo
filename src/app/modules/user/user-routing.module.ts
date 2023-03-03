@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './interfaces/dashboard/dashboard.component';
+import { NewUserComponent } from './interfaces/new-user/new-user.component';
+import { UserComponent } from './interfaces/user/user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: UserComponent
+  },
+  {
+    path: 'new',
+    component: NewUserComponent
   }
 ];
 
