@@ -1,0 +1,212 @@
+h2 {
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 1.25rem !important;
+    margin-left: 2px;
+  }
+  
+  ::placeholder {
+    font-family: "Montserrat Regular";
+    color: #657685 !important;
+    font-size: 0.8rem !important;
+  }
+  
+  label {
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    text-align: right;
+  }
+  
+  input {
+    font-family: "Montserrat Regular";
+    color: #657684 !important;
+    font-size: 0.80rem !important;
+  }
+  
+  .form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #01595c;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgb(13 110 253 / 15%);
+  }
+  
+  .mat-form-field {
+    margin: 0;
+  
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+  }
+  
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 200px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  #uploadFile {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  ::ng-deep.mat-form-field-ripple {
+    background-color: #01595c !important;
+  }
+  
+  .input-file {
+    padding-left: 10px;
+  }
+  
+  .card-module {
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(2, 139, 126, 0.54)
+  }
+  
+  h3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    margin-left: 2px;
+  }
+  
+  h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Montserrat Bold";
+    color: #01595C !important;
+    font-size: 0.9rem !important;
+    margin-left: 2px;
+  }
+  
+  img {
+    width: 60px;
+    padding-right: 10px;
+  }
+  
+  .module {
+    padding-top: 20px;
+  }
+  
+  .module-plan h3 {
+    width: 120px;
+  }
+  
+  pt-5 {
+    margin-top: 15px !important;
+  }
+  
+  .icon-display {
+    transform: scale(2);
+    color: rgba(101, 118, 133, 0.185);
+  }
+  
+  .btn-add {
+    padding-bottom: 0px;
+    background: #01595c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 13px;
+  }
+  
+  .btn-add .mat-icon {
+    padding-top: 3px;
+  }
+  
+  .min-max {
+    padding-bottom: 5px;
+  }
+  
+  .min-max .max,
+  .min-max .min {
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.9rem !important;
+    margin-right: 4px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .min-max .max-un,
+  .min-max .min-un {
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.9rem !important;
+    margin-left: 4px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sub-title span {
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.9rem !important;
+    margin-left: 20px;
+  }
+  
+  .span-radio {
+    font-family: "Montserrat Regular";
+    color: #747474 !important;
+    font-size: 0.95rem !important;
+    text-align: left;
+    margin-left: 6px;
+    display: block;
+  }
+  
+  
+  .btn-save {
+    margin-left: 3px;
+  }
+  
+  span-radio {
+    font-family: "Montserrat Light";
+    color: #747474 !important;
+    font-size: 0.88rem !important;
+    text-align: left;
+    margin-left: 26px;
+    display: block;
+  }
+
+  .col-form-label{
+    color: #657685 !important;
+  }
+
+  .content-img{
+    background: #01595c;
+    width: 100%;
+    margin-right: 10px;
+    border: 2px solid #01595c;
+    border-radius: 100%;
+    width: 55px;
+    height: 55px;
+    position: relative;
+  }
+
+  .content-img img{
+    width: 40px;
+    height: 40px;
+    padding-left: 14px;
+    padding-right: 3px;
+    padding-top: 10px;
+  }

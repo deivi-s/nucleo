@@ -49,60 +49,140 @@
                 </div>
             </div>
 
-            <div class="col-3">
-                <div class="resume p-4">
-                    <div class="holding mb-4 pb-4">
-                        <div class="mb-4">
-                            <h2>Usuarios totales</h2>
-                        </div>
-                        <div fxLayout >
-                            <img src="assets/icons/company/Usuario.svg" alt="">
-                            <span class="resumen-numbers">2.000</span>
-                        </div>
-                        <span class="pb-5">Usuarios registrados</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="col-6">
-                <div class="resume p-4">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="mb-4">
-                                <h2>Módulos por empresa</h2>
+            <div class="col 9">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="resume p-4">
+                            <div class="holding mb-1 pb-4">
+                                <div class="mb-4">
+                                    <h2>Usuarios totales</h2>
+                                </div>
+                                <div fxLayout>
+                                    <img src="assets/icons/company/Usuario.svg" alt="">
+                                    <span class="resumen-numbers">2.000</span>
+                                </div>
+                                <span class="pb-5">Usuarios registrados</span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="resume p-4">
                             <div class="row">
-                                <div class="col-6 mb-3">
-                                    <div fxLayout>
-                                        <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
+                                <div class="col-8">
+                                    <div class="mb-4">
+                                        <h2>Módulos por empresa</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-orange"></div> <span
+                                                    class="resumen-shape">Check</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-orange"></div> <span
+                                                    class="resumen-shape">Check</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-yellow"></div> <span
+                                                    class="resumen-shape">Check</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-yellow"></div> <span
+                                                    class="resumen-shape">Check</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6 mb-3">
-                                    <div fxLayout>
-                                        <div class="shape-color-orange"></div> <span class="resumen-shape">Check</span>
-                                    </div>
+                                <div class="col-3">
+                                    <canvas #doughnutCanvas class="canvas"></canvas>
                                 </div>
-                                <div class="col-6 mb-3">
-                                    <div fxLayout>
-                                        <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
+                            </div>
+
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-white p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Check</h2>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <div fxLayout>
-                                        <div class="shape-color-yellow"></div> <span class="resumen-shape">Check</span>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/check-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">20</span>
+                                    </div>
+                                    <div>
+                                        <span>Empresas con el módulo</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <canvas #doughnutCanvas class="canvas"></canvas>
+                            <div class="p-4 pt-4">
+                                <canvas #barCanvas class="canvas"></canvas>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-yellow p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Estados</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/status-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">10</span>
+                                    </div>
+                                    <div>
+                                        <span>Empresas con el módulo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 pt-4">
+                                <canvas #barCanvas2 class="canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-green p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Otros</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/module-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">30</span>
+                                    </div>
+                                    <div>
+                                        <span>www.nucleo-ods.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 pt-4">
+                                <canvas #barCanvas3 class="canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+
         </div>
     </mat-card>
 </div>

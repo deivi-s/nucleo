@@ -17,10 +17,12 @@ import { UserComponent } from './interfaces/user/user.component';
 import { NewUserComponent } from './interfaces/new-user/new-user.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReporteUserComponent } from './interfaces/reporte-user/reporte-user.component';
+import { SuperAdministradorUserComponent } from './interfaces/super-administrador-user/super-administrador-user.component';
+import { NewSuperUserComponent } from './interfaces/new-super-user/new-super-user.component';
 
 @NgModule({
   declarations: [
-    DashboardComponent, ListUserComponent, FormUserComponent, UserComponent, NewUserComponent, ReporteUserComponent
+    DashboardComponent, ListUserComponent, FormUserComponent, UserComponent, NewUserComponent, ReporteUserComponent, SuperAdministradorUserComponent, NewSuperUserComponent
   ],
   imports: [
     CommonModule,

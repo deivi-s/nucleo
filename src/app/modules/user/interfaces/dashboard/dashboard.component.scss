@@ -4,8 +4,8 @@
 
 
 img {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    margin-right: 10px;
 }
 
 h2 {
@@ -35,7 +35,6 @@ button span {
 
 .resumen-numbers {
     font-size: 1.6rem !important;
-    padding-left: 5px;
 }
 
 .resumen-shape {
@@ -57,4 +56,40 @@ button span {
     height: 20px;
     width: 20px;
     border-radius: 7px;
+}
+
+.color-dark-green {
+    color: #01595C !important;
+    font-size: 0.7rem !important;
+}
+
+.color-green {
+    color: #008450 !important;
+    font-size: 0.7rem !important;
+}
+
+.color-yellow {
+    color: #F2B600 !important;
+    font-size: 0.7rem !important;
+}
+
+.content-flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.resumen-numbers-green {
+    color: #008450 !important;
+    font-size: 1.6rem !important;
+}
+
+.resumen-numbers-yellow {
+    color: #F2B600 !important;
+    font-size: 1.6rem !important;
+}
+
+.d-canvas{
+    display: flex;
+    justify-content: space-around;
 }

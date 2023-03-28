@@ -2,5 +2,394 @@
 </nucleo-title>
 
 <mat-tab-group>
-  <mat-tab label="Datos importantes"><nucleo-form-user></nucleo-form-user></mat-tab>
+  <mat-tab label="Datos importantes">
+    <nucleo-card>
+      <div fxLayout fxLayoutAlign="space-between center" class="">
+        <h2>1. Datos Personales</h2>
+      </div>
+      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+        <span>Complete los campos con la información indicada</span>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Nombre:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Nombre">
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Apellidos:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Apellidos"><!--
+                    <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Rut:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Rut">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Email">
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Telefono:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Telefono"><!--
+                  <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Contacto de emergencia:</label>
+            <div class="col-sm-8">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Ingresar Contacto de emergencia">
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="col-sm-3 col-form-label">Foto de perfil:</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <div>
+                  <mat-toolbar>
+                    <button mat-flat-button color="primary" mat-raised-button class="btn-upload-file">Cargar
+                      archivo</button>
+                    <input class="input-file" matInput [(ngModel)]="fileAttr" readonly name="name" />
+                  </mat-toolbar>
+                  <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple" accept="image/*"
+                    (change)="uploadFileEvt($event)" />
+                </div>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </nucleo-card>
+
+    <nucleo-card>
+      <div fxLayout fxLayoutAlign="space-between center" class="">
+        <h2>2. Datos empresa</h2>
+      </div>
+      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+        <span>Complete los campos con la información indicada</span>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group row mb-3 estado">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Área:</label>
+            <div class="col-sm-8">
+              <mat-form-field appearance="fill" color="primary">
+                <mat-label>Seleccionar área</mat-label>
+                <mat-select matNativeControl [value]="'1'">
+                  <mat-option value="activo" value="1">Área 1</mat-option>
+                  <mat-option value="inactivo" value="0">Área 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-group row mb-3 estado">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cargo:</label>
+            <div class="col-sm-8">
+              <mat-form-field appearance="fill" color="primary">
+                <mat-label>Seleccionar cargo</mat-label>
+                <mat-select matNativeControl [value]="'1'">
+                  <mat-option value="activo" value="1">Cargo 1</mat-option>
+                  <mat-option value="inactivo" value="0">Cargo 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-group row mb-3 estado">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cuadrilla:</label>
+            <div class="col-sm-8">
+              <mat-form-field appearance="fill" color="primary">
+                <mat-label>Seleccionar cuadrilla</mat-label>
+                <mat-select matNativeControl [value]="'1'">
+                  <mat-option value="activo" value="1">Cuadrilla 1</mat-option>
+                  <mat-option value="inactivo" value="0">Cuadrilla 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group row mb-3 estado">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Asignación:</label>
+            <div class="col-sm-8">
+              <mat-radio-group>
+                <div class="m-2">
+                  <mat-radio-button value="3" color="primary"><span class="span-radio">Trabajador
+                      directo</span></mat-radio-button>
+                </div>
+                <div class="m-2">
+                  <mat-radio-button value="2" checked="true" color="primary"><span class="span-radio">Trabajador
+                      Indirecto</span></mat-radio-button>
+                </div>
+                <div class="m-2">
+                  <mat-radio-button value="2" checked="true" color="primary"><span class="span-radio">Trabajador
+                      asignación</span></mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </nucleo-card>
+
+    <nucleo-card>
+      <div class="">
+        <div fxLayout fxLayoutAlign="space-between center" class="">
+          <h2>3. Sucursales y proyectos</h2>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+          <span>Complete los campos con la información indicada</span>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Sucursal:</label>
+          <div class="col-sm-9">
+            <div fxLayout fxLayoutAlign="space-between center">
+              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                placeholder="Escribir Nombre de la sucursal">
+              <div style="width: 53px;"></div>
+            </div>
+
+          </div>
+        </div>
+        <div class="offset-1 col-11">
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Proyecto:</label>
+            <div class="col-sm-9">
+              <div fxLayout fxLayoutAlign="space-between center">
+                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                  placeholder="Escribir Nombre de proyecto">
+                <div style="width: 53px;"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label"></label>
+            <div class="col-sm-9">
+              <div fxLayout fxLayoutAlign="space-between center">
+                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                  placeholder="Dirección de proyecto">
+
+                <button type="button" color="primary" class="btn-add">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div style="float: right;">
+          <button type="button" mat-raised-button color="primary">
+            <span>Nueva sucursal</span>
+          </button>
+        </div>
+      </div>
+    </nucleo-card>
+    <nucleo-card>
+
+      <div fxLayout fxLayoutAlign="space-between center" class="">
+        <h2>4. Módulos </h2>
+      </div>
+      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+        <span>Selecciona el módulo y perfil que tendrá este usuario</span>
+      </div>
+
+      <div class="row">
+        <div class="col-6 estado">
+          <div fxLayout class="module">
+            <div class="content-img">
+              <img src="assets/icons/module/computer.svg">
+            </div>
+            <h3>PERFIL WEB</h3>
+          </div>
+          <div class="col-12">
+            <div class="card-module">
+              <div class="row">
+                <section class="col-4">
+                  <div >
+                    <span>
+                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                        {{moduleCheck.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="list-module">
+                      <ul>
+                        <li *ngFor="let subtask of moduleCheck.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                </section>
+                <section class="col-4">
+                  <div >
+                    <span>
+                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                        {{moduleCheck.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="list-module">
+                      <ul>
+                        <li *ngFor="let subtask of moduleCheck.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                </section>
+                <section class="col-4">
+                  <div >
+                    <span>
+                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                        {{moduleCheck.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="list-module">
+                      <ul>
+                        <li *ngFor="let subtask of moduleCheck.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-5 estado">
+          <div fxLayout class="module">
+            <div class="content-img">
+              <img src="assets/icons/module/movil.svg">
+            </div>
+            <h3>PERFIL WEB</h3>
+          </div>
+          <div class="col-12">
+            <div class="card-module">
+              <div class="row">
+                <section class="col-6">
+                  <div >
+                    <span>
+                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                        {{moduleCheck.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="list-module">
+                      <ul>
+                        <li *ngFor="let subtask of moduleCheck.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                </section>
+                <section class="col-6">
+                  <div >
+                    <span>
+                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                        {{moduleCheck.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="list-module">
+                      <ul>
+                        <li *ngFor="let subtask of moduleCheck.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </nucleo-card>
+
+    <nucleo-card>
+      <div fxLayout fxLayoutAlign="space-between center" class="">
+        <h2>5. Contraseña </h2>
+      </div>
+      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-4">
+        <span>Seleccione el tipo de contraseña para los usuarios.</span>
+      </div>
+
+
+
+      <div class="form-group row mb-2">
+        <div class="col-sm-8">
+          <mat-radio-group aria-label="AASSS" aria-labelledby="AASSS">
+            <div class="m-3">
+              <mat-radio-button value="2" color="primary">RUT</mat-radio-button><br>
+              <span class="span-radio">El rut de cada usuario se usa como contraseña <br>(Sin punto ni guón). </span>
+            </div>
+            <div class="m-3">
+              <mat-radio-button value="1" checked="true" color="primary">PIN</mat-radio-button><br>
+              <span class="span-radio">PIN único para todos los nuevos usuarios <br>definidos por el
+                administrador.</span>
+            </div>
+
+          </mat-radio-group>
+        </div>
+      </div>
+
+
+    </nucleo-card>
+    <div style="float: right;" class="p-5 mb-5">
+      <button type="button" mat-raised-button color="warn">
+        <span>Cancelar</span>
+      </button>
+      <button type="button" mat-raised-button color="primary" class="btn-save">
+        <span>Guardar</span>
+      </button>
+    </div>
+
+  </mat-tab>
 </mat-tab-group>
