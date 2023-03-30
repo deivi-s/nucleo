@@ -10,8 +10,8 @@ import Chart from 'chart.js/auto';
 })
 export class DashboardComponent implements OnInit {
 
-  @ViewChild('doughnutCanvas2') doughnutCanvas: ElementRef | undefined;
-  doughnutChart: any
+/*   @ViewChild('doughnutCanvas2') doughnutCanvas: ElementRef | undefined;
+  doughnutChart: any */
 
   @ViewChild('barCanvas') barCanvas: ElementRef | undefined;
   barChart: any
@@ -55,10 +55,10 @@ export class DashboardComponent implements OnInit {
       },
     });
 
-    this.doughnutChart = new Chart(this.doughnutCanvas?.nativeElement, {
+ /*    this.doughnutChart = new Chart(this.doughnutCanvas?.nativeElement, {
       type: 'doughnut',
       data: {
-        /*   labels: ['Check', 'Avances'], */
+      
         datasets: [
           {
 
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
           },
         ],
       },
-    });
+    }); */
 
     this.barChart = new Chart(this.barCanvas?.nativeElement, {
       type: 'bar',
