@@ -12,4 +12,7 @@ export interface Base<Entity> {
   update(id: number, entity: Partial<Entity>): Observable<Entity>;
   delete(id: number): Observable<any>;
   page(page: number): Observable<ResultPage<Entity>>;
+  listCompany(): Observable<Entity[]>;
+  listBranchOffice(id: number): Observable<Entity[]>;
+  listProject(id: number): Observable<Entity[]>;
 }

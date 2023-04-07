@@ -14,7 +14,15 @@ const routes: Routes = [
     component: NewUserComponent
   },
   {
+    path: 'edit/:id',
+    component: NewUserComponent
+  },
+  {
     path: 'administrator/new',
+    component: NewSuperUserComponent
+  },
+  {
+    path: 'administrator/edit/:id',
     component: NewSuperUserComponent
   }
 ];
@@ -23,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class UserRoutingModule { }

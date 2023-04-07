@@ -51,17 +51,18 @@ $nucleo-theme: mat.define-light-theme((color: (primary: $nucleo-primary,
 
 html,
 body {
-  height: 100%;
+  height: 100% !important;
   margin: 0;
   padding: 0;
 }
 
 html,
 body {
-  height: 100%;
+  height: 100% !important;
 }
 
 body {
+  height: 100% !important;
   margin: 0;
 }
 
@@ -94,10 +95,11 @@ button .mat-button-wrapper img {
 
 html,
 body {
-  height: 100%;
+  height: 100% !important;
 }
 
 body {
+  height: 100% !important;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -138,7 +140,7 @@ body {
 
 .mat-tab-labels .mat-ripple {
 
-  background: rgba(1, 89, 92, 0.2)  !important;
+  background: rgba(1, 89, 92, 0.2) !important;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
 }
@@ -290,14 +292,130 @@ ul,
   ;
 }
 
-.btn-upload-file{
+.btn-upload-file {
   font-family: "Montserrat Regular";
   color: black !important;
   font-size: 0.85rem !important;
 }
 
-.mat-radio-label-content{
+.mat-radio-label-content {
   font-family: "Montserrat Bold" !important;
   color: #01595C !important;
   font-size: 1rem !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #01595c !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px #01595c !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: 0.25em solid #41ab9e !important;
+}
+
+.swal2-icon.swal2-warning {
+  color: white !important;
+  z-index: 999 !important;
+}
+
+.swal2-icon.swal2-warning {
+  border: 0.25em solid #ff0000 !important;
+}
+
+
+.swal2-warning {
+  background-color: #E52334 !important;
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
+  background-color: white !important;
+}
+
+.swal2-title {
+  font-family: 'Montserrat Bold' !important;
+  color: #01595C !important;
+  font-size: 25px !important;
+}
+
+.swal2-confirm {
+  font-family: 'Montserrat Bold' !important;
+}
+
+.swal2-success-line-tip,
+.swal2-success-line-long {
+  z-index: 999 !important;
+}
+
+.swal2-success-ring {
+  background: #59C4B7 !important;
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
+  height: 0.45em !important;
+}
+
+.swal2-html-container {
+  font-family: 'Montserrat Regular' !important;
+}
+
+.swal2-icon-warning .swal2-title {
+  font-family: 'Montserrat Bold' !important;
+  color: #B81D13 !important;
+  font-size: 25px !important;
+}
+
+.swal2-icon-warning .swal2-confirm {
+  background-color: #B81D13 !important;
+}
+
+.swal2-icon-warning .swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px #B81D13 !important;
+}
+
+.swal2-cancel {
+  font-family: 'Montserrat Bold' !important;
+  background-color: #fdfdfd !important;
+  color: white !important;
+  background: 1px #05050545 !important;
+  width: 122px !important;
+}
+
+.swal2-styled.swal2-default-outline:focus {
+  box-shadow: 0 0 0 3px rgb(84 84 84 / 0%) !important;
+}
+
+.swal2-icon-warning .swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px rgb(84 84 84 / 0%) !important;
+}
+
+.mat-paginator-range-actions .mat-button-wrapper {
+  color: #657685 !important;
+}
+
+.mat-paginator-container {
+  font-family: 'Montserrat Bold' !important;
+  font-size: 13px !important;
+  color: #657685 !important;
+}
+
+.list-emp .container {
+  padding-top: 0 !important;
+}
+
+.sucursal .container {
+  padding-bottom: 0 !important;
+}
+
+.dropdown-list .arrow-down + .list-area .lazyContainer {
+  min-height:300px;
+}
+
+.invalido .mat-form-field-label {
+  color: red !important;
+}
+.invalido .mat-select-arrow{
+  color: red !important;
 }

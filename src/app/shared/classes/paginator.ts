@@ -1,7 +1,7 @@
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
 export class Paginator extends MatPaginatorIntl {
-  override itemsPerPageLabel = 'Items por página:';
+  override itemsPerPageLabel = 'Registros por página:';
   override nextPageLabel = 'SIGUIENTE PÁGINA';
   override previousPageLabel = 'PÁGINA ANTERIOR';
   override firstPageLabel = 'PRIMERA PÁGINA';
@@ -17,6 +17,6 @@ export class Paginator extends MatPaginatorIntl {
       startIndex < length
         ? Math.min(startIndex + pageSize, length)
         : startIndex + pageSize;
-    return `${startIndex + 1} - ${endIndex} de ${length} registros`;
+    return `Páginas ${page + 1} de ${Math.ceil(length / 10)} `;
   };
 }

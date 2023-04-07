@@ -1,395 +1,489 @@
 <nucleo-title title="Usuarios" class="title">
 </nucleo-title>
-
-<mat-tab-group>
-  <mat-tab label="Datos importantes">
-    <nucleo-card>
-      <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>1. Datos Personales</h2>
-      </div>
-      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
-        <span>Complete los campos con la información indicada</span>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Nombre:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Nombre">
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Apellidos:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Apellidos"><!--
-                    <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Rut:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Rut">
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Email:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Email">
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Telefono:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Telefono"><!--
-                  <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Contacto de emergencia:</label>
-            <div class="col-sm-8">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Ingresar Contacto de emergencia">
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="col-sm-3 col-form-label">Foto de perfil:</label>
-            <div class="col-sm-8">
-              <mat-form-field>
-                <div>
-                  <mat-toolbar>
-                    <button mat-flat-button color="primary" mat-raised-button class="btn-upload-file">Cargar
-                      archivo</button>
-                    <input class="input-file" matInput [(ngModel)]="fileAttr" readonly name="name" />
-                  </mat-toolbar>
-                  <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple" accept="image/*"
-                    (change)="uploadFileEvt($event)" />
-                </div>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </nucleo-card>
-
-    <nucleo-card>
-      <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>2. Datos empresa</h2>
-      </div>
-      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
-        <span>Complete los campos con la información indicada</span>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <div class="form-group row mb-3 estado">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Área:</label>
-            <div class="col-sm-8">
-              <mat-form-field appearance="fill" color="primary">
-                <mat-label>Seleccionar área</mat-label>
-                <mat-select matNativeControl [value]="'1'">
-                  <mat-option value="activo" value="1">Área 1</mat-option>
-                  <mat-option value="inactivo" value="0">Área 2</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="form-group row mb-3 estado">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cargo:</label>
-            <div class="col-sm-8">
-              <mat-form-field appearance="fill" color="primary">
-                <mat-label>Seleccionar cargo</mat-label>
-                <mat-select matNativeControl [value]="'1'">
-                  <mat-option value="activo" value="1">Cargo 1</mat-option>
-                  <mat-option value="inactivo" value="0">Cargo 2</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="form-group row mb-3 estado">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cuadrilla:</label>
-            <div class="col-sm-8">
-              <mat-form-field appearance="fill" color="primary">
-                <mat-label>Seleccionar cuadrilla</mat-label>
-                <mat-select matNativeControl [value]="'1'">
-                  <mat-option value="activo" value="1">Cuadrilla 1</mat-option>
-                  <mat-option value="inactivo" value="0">Cuadrilla 2</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="form-group row mb-3 estado">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Asignación:</label>
-            <div class="col-sm-8">
-              <mat-radio-group>
-                <div class="m-2">
-                  <mat-radio-button value="3" color="primary"><span class="span-radio">Trabajador
-                      directo</span></mat-radio-button>
-                </div>
-                <div class="m-2">
-                  <mat-radio-button value="2" checked="true" color="primary"><span class="span-radio">Trabajador
-                      Indirecto</span></mat-radio-button>
-                </div>
-                <div class="m-2">
-                  <mat-radio-button value="2" checked="true" color="primary"><span class="span-radio">Trabajador
-                      asignación</span></mat-radio-button>
-                </div>
-              </mat-radio-group>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-    </nucleo-card>
-
-    <nucleo-card>
-      <div class="">
+<form [formGroup]="users">
+  <mat-tab-group>
+    <mat-tab label="Datos importantes">
+      <nucleo-card>
         <div fxLayout fxLayoutAlign="space-between center" class="">
-          <h2>3. Sucursales y proyectos</h2>
+          <h2>1. Datos Personales</h2>
         </div>
         <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
           <span>Complete los campos con la información indicada</span>
         </div>
-        <div class="form-group row mb-3">
-          <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Sucursal:</label>
-          <div class="col-sm-9">
-            <div fxLayout fxLayoutAlign="space-between center">
-              <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Escribir Nombre de la sucursal">
-              <div style="width: 53px;"></div>
-            </div>
 
-          </div>
-        </div>
-        <div class="offset-1 col-11">
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Proyecto:</label>
-            <div class="col-sm-9">
-              <div fxLayout fxLayoutAlign="space-between center">
-                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                  placeholder="Escribir Nombre de proyecto">
-                <div style="width: 53px;"></div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Nombre:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="nombre" class="form-control ng-pristine " [ngClass]="{'is-invalid': submited && !users.controls['nombre'].valid }"
+                  placeholder="Ingresar Nombre">
               </div>
-
             </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label"></label>
-            <div class="col-sm-9">
-              <div fxLayout fxLayoutAlign="space-between center">
-                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                  placeholder="Dirección de proyecto">
-
-                <button type="button" color="primary" class="btn-add">
-                  <mat-icon>add</mat-icon>
-                </button>
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Apellidos:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="apellidos" class="form-control ng-pristine " [ngClass]="{'is-invalid': submited && !users.controls['apellidos'].valid }"
+                  placeholder="Ingresar Apellidos">
               </div>
-
             </div>
-          </div>
-
-        </div>
-
-        <div style="float: right;">
-          <button type="button" mat-raised-button color="primary">
-            <span>Nueva sucursal</span>
-          </button>
-        </div>
-      </div>
-    </nucleo-card>
-    <nucleo-card>
-
-      <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>4. Módulos </h2>
-      </div>
-      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
-        <span>Selecciona el módulo y perfil que tendrá este usuario</span>
-      </div>
-
-      <div class="row">
-        <div class="col-6 estado">
-          <div fxLayout class="module">
-            <div class="content-img">
-              <img src="assets/icons/module/computer.svg">
-            </div>
-            <h3>PERFIL WEB</h3>
-          </div>
-          <div class="col-12">
-            <div class="card-module">
-              <div class="row">
-                <section class="col-4">
-                  <div >
-                    <span>
-                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                        {{moduleCheck.name}}
-                      </mat-checkbox>
-                    </span>
-                    <span class="list-module">
-                      <ul>
-                        <li *ngFor="let subtask of moduleCheck.subtasks">
-                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                            (ngModelChange)="updateAllComplete()">
-                            {{subtask.name}}
-                          </mat-checkbox>
-                        </li>
-                      </ul>
-                    </span>
-                  </div>
-                </section>
-                <section class="col-4">
-                  <div >
-                    <span>
-                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                        {{moduleCheck.name}}
-                      </mat-checkbox>
-                    </span>
-                    <span class="list-module">
-                      <ul>
-                        <li *ngFor="let subtask of moduleCheck.subtasks">
-                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                            (ngModelChange)="updateAllComplete()">
-                            {{subtask.name}}
-                          </mat-checkbox>
-                        </li>
-                      </ul>
-                    </span>
-                  </div>
-                </section>
-                <section class="col-4">
-                  <div >
-                    <span>
-                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                        {{moduleCheck.name}}
-                      </mat-checkbox>
-                    </span>
-                    <span class="list-module">
-                      <ul>
-                        <li *ngFor="let subtask of moduleCheck.subtasks">
-                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                            (ngModelChange)="updateAllComplete()">
-                            {{subtask.name}}
-                          </mat-checkbox>
-                        </li>
-                      </ul>
-                    </span>
-                  </div>
-                </section>
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Rut:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="rut" class="form-control ng-pristine " placeholder="Ingresar Rut" [ngClass]="{'is-invalid': submited && !users.controls['rut'].valid }">
               </div>
             </div>
 
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Correo Personal:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="personal" class="form-control ng-pristine " >
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Email:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="email" class="form-control ng-pristine " 
+                  placeholder="Ingresar Email">
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Telefono:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="telefono" class="form-control ng-pristine " [ngClass]="{'is-invalid': submited && !users.controls['telefono'].valid }"
+                  placeholder="Ingresar Telefono">
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Contacto de emergencia:</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="contacto" class="form-control ng-pristine "
+                  placeholder="Ingresar Contacto de emergencia">
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="requiredText" class="col-sm-3 col-form-label">Foto de perfil:</label>
+              <div class="col-sm-8">
+                <mat-form-field>
+                  <div>
+                    <mat-toolbar>
+                      <button mat-flat-button color="primary" mat-raised-button class="btn-upload-file">Cargar
+                        archivo</button>
+                      <input class="input-file" matInput [(ngModel)]="fileAttr" readonly
+                        [ngModelOptions]="{standalone: true}" />
+                    </mat-toolbar>
+                    <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple" accept="image/*"
+                      (change)="uploadFileEvt($event)" />
+                  </div>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-5 estado">
-          <div fxLayout class="module">
-            <div class="content-img">
-              <img src="assets/icons/module/movil.svg">
+      </nucleo-card>
+
+      <nucleo-card>
+        <div fxLayout fxLayoutAlign="space-between center" class="">
+          <h2>2. Datos cargo laboral</h2>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+          <span>Complete los campos con la información indicada</span>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Área:</label>
+              <div class="col-sm-8">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['area'].valid }">
+                  <mat-label>Seleccionar área</mat-label>
+                  <mat-select matNativeControl formControlName="area">
+                    <mat-option value="activo" value="1">Área 1</mat-option>
+                    <mat-option value="inactivo" value="0">Área 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
-            <h3>PERFIL WEB</h3>
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cargo:</label>
+              <div class="col-sm-8">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['cargo'].valid }">
+                  <mat-label>Seleccionar cargo</mat-label>
+                  <mat-select matNativeControl formControlName="cargo">
+                    <mat-option value="activo" value="1">Cargo 1</mat-option>
+                    <mat-option value="inactivo" value="0">Cargo 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Cuadrilla:</label>
+              <div class="col-sm-8">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['cuadrilla'].valid }">
+                  <mat-label>Seleccionar cuadrilla</mat-label>
+                  <mat-select matNativeControl formControlName="cuadrilla">
+                    <mat-option value="activo" value="1">Cuadrilla 1</mat-option>
+                    <mat-option value="inactivo" value="0">Cuadrilla 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
-          <div class="col-12">
-            <div class="card-module">
-              <div class="row">
-                <section class="col-6">
-                  <div >
-                    <span>
-                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                        {{moduleCheck.name}}
-                      </mat-checkbox>
-                    </span>
-                    <span class="list-module">
-                      <ul>
-                        <li *ngFor="let subtask of moduleCheck.subtasks">
-                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                            (ngModelChange)="updateAllComplete()">
-                            {{subtask.name}}
-                          </mat-checkbox>
-                        </li>
-                      </ul>
-                    </span>
+          <div class="col-6">
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label" >Asignación:</label>
+              <div class="col-sm-8">
+                <mat-radio-group formControlName="asignacion">
+                  <div class="m-2">
+                    <mat-radio-button [value]="1" color="primary" [checked]='true'><span class="span-radio">Trabajador
+                        directo</span></mat-radio-button>
                   </div>
-                </section>
-                <section class="col-6">
-                  <div >
-                    <span>
-                      <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                        {{moduleCheck.name}}
-                      </mat-checkbox>
-                    </span>
-                    <span class="list-module">
-                      <ul>
-                        <li *ngFor="let subtask of moduleCheck.subtasks">
-                          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                            (ngModelChange)="updateAllComplete()">
-                            {{subtask.name}}
-                          </mat-checkbox>
-                        </li>
-                      </ul>
-                    </span>
+                  <div class="m-2">
+                    <mat-radio-button [value]="2" color="primary"><span class="span-radio">Trabajador
+                        indirecto</span></mat-radio-button>
                   </div>
-                </section>
+                  <div class="m-2">
+                    <mat-radio-button [value]="3" color="primary"><span class="span-radio">Trabajador
+                        asignación</span></mat-radio-button>
+                  </div>
+                </mat-radio-group>
               </div>
             </div>
 
           </div>
         </div>
-      </div>
-    </nucleo-card>
-
-    <nucleo-card>
-      <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>5. Contraseña </h2>
-      </div>
-      <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-4">
-        <span>Seleccione el tipo de contraseña para los usuarios.</span>
-      </div>
 
 
+      </nucleo-card>
 
-      <div class="form-group row mb-2">
-        <div class="col-sm-8">
-          <mat-radio-group aria-label="AASSS" aria-labelledby="AASSS">
-            <div class="m-3">
-              <mat-radio-button value="2" color="primary">RUT</mat-radio-button><br>
-              <span class="span-radio">El rut de cada usuario se usa como contraseña <br>(Sin punto ni guón). </span>
+
+      <nucleo-card class="sucursal">
+        <div>
+          <div fxLayout fxLayoutAlign="space-between center" class="">
+            <h2>3. Sucursales y proyectos</h2>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center" class="sub-title ">
+            <span>Complete los campos con la información indicada</span>
+          </div>
+
+          <div style="padding-top: 50px; padding-bottom: 30px;">
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="col-sm-2 col-form-label">Holding:</label>
+              <div class="col-sm-9">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['holding'].valid }">
+                  <mat-label>Seleccionar Holding</mat-label>
+                  <mat-select matNativeControl formControlName="holding" (ngModelChange)="changeHolding($event)">
+                    <mat-option>-</mat-option>
+                    <mat-option *ngFor="let holding of holdingList" [value]="holding">{{holding.nombre}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
-            <div class="m-3">
-              <mat-radio-button value="1" checked="true" color="primary">PIN</mat-radio-button><br>
-              <span class="span-radio">PIN único para todos los nuevos usuarios <br>definidos por el
-                administrador.</span>
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="col-sm-2 col-form-label">Empresa:</label>
+              <div class="col-sm-9">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['empresa'].valid }">
+                  <mat-label>Seleccionar Empresas</mat-label>
+                  <mat-select matNativeControl multiple formControlName="empresa"
+                    (ngModelChange)="changeCompany($event)">
+                    <mat-option *ngFor="let company of companyList" [value]="company">{{company.nombre}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
 
-          </mat-radio-group>
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class="col-sm-2 col-form-label">Sucursal:</label>
+              <div class="col-sm-9">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['sucursal'].valid }">
+                  <mat-label>Seleccionar Sucursales</mat-label>
+                  <mat-select matNativeControl multiple formControlName="sucursal"
+                    (ngModelChange)="changeBranchCompany($event)">
+                    <mat-option *ngFor="let banchOffice of banchOfficeList"
+                      [value]="banchOffice">{{banchOffice.nombre}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3 estado">
+              <label for="requiredText" class=" col-sm-3 col-form-label">Proyecto: {{ users.controls['proyecto'].valid }}</label>
+              <div class="col-sm-8">
+                <mat-form-field appearance="fill" color="primary" [ngClass]="{'invalido': submited && !users.controls['proyecto'].valid }">
+                  <mat-label>Seleccionar Proyectos</mat-label>
+                  <mat-select matNativeControl multiple formControlName="proyecto">
+                    <mat-option *ngFor="let project of projectList" [value]="project">{{project.nombre}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+          <!--  <div style="float: right;">
+            <button type="button" mat-raised-button color="primary" (click)="addList()">
+              <span>Nueva Empresa</span>
+            </button>
+          </div> -->
         </div>
+      </nucleo-card>
+
+      <!--  <nucleo-card class="card-expansion">
+        <div *ngFor="let item of list; let element=index;">
+          <div fxLayout>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+              style="width: 100%;">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ element + 1}}. Nueva Empresa
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div style="padding-top: 20px; padding-bottom: 30px;">
+                <div class="form-group row mb-3 estado">
+                  <label for="requiredText" class="col-sm-2 col-form-label">Holding:</label>
+                  <div class="col-sm-9">
+                    <mat-form-field appearance="fill" color="primary">
+                      <mat-label>Seleccionar Holding</mat-label>
+                      <mat-select matNativeControl formControlName="holding">
+                        <mat-option *ngFor="let holding of holdingList"
+                        [value]="holding.id">{{holding.nombre}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row mb-3 estado">
+                  <label for="requiredText" class="col-sm-2 col-form-label">Empresa:</label>
+                  <div class="col-sm-9">
+                    <mat-form-field appearance="fill" color="primary">
+                      <mat-label>Seleccionar Empresas</mat-label>
+                      <mat-select matNativeControl multiple formControlName="empresa">
+                        <mat-option *ngFor="let company of companyList"
+                          [value]="company.id">{{company.nombre}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="form-group row mb-3 estado">
+                  <label for="requiredText" class="col-sm-2 col-form-label">Sucursal:</label>
+                  <div class="col-sm-9">
+                    <mat-form-field appearance="fill" color="primary">
+                      <mat-label>Seleccionar Sucursales</mat-label>
+                      <mat-select matNativeControl multiple>
+                        <mat-option *ngFor="let company of companyList"
+                          [value]="company.id">{{company.nombre}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="form-group row mb-3 estado">
+                  <label for="requiredText" class=" col-sm-3 col-form-label">Proyecto:</label>
+                  <div class="col-sm-8">
+                    <mat-form-field appearance="fill" color="primary">
+                      <mat-label>Seleccionar Proyectoos</mat-label>
+                      <mat-select matNativeControl multiple>
+                        <mat-option *ngFor="let company of companyList"
+                          [value]="company.id">{{company.nombre}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              </div>
+            </mat-expansion-panel>
+            <div style="float: right;">
+              <button type="button" mat-raised-button color="primary" (click)="deleteRow(element)"
+                style="height: 48px;margin-left: 5px;">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div style="height: 20px;"></div>
+        </div>
+      </nucleo-card>
+ -->
+      <nucleo-card>
+        <div fxLayout fxLayoutAlign="space-between center" class="">
+          <h2>4. Módulos </h2>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-5">
+          <span>Selecciona el módulo y perfil que tendrá este usuario</span>
+        </div>
+        <div class="row">
+          <div class="col-6 estado">
+            <div fxLayout class="module">
+              <div class="content-img">
+                <img src="assets/icons/module/computer.svg">
+              </div>
+              <h3>PERFIL WEB</h3>
+            </div>
+            <div class="col-12">
+              <div class="card-module">
+                <div class="row">
+                  <section class="col-4">
+                    <div>
+                      <span>
+                        <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                          [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                          {{moduleCheck.name}}
+                        </mat-checkbox>
+                      </span>
+                      <span class="list-module">
+                        <ul>
+                          <li *ngFor="let subtask of moduleCheck.subtasks">
+                            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                              (ngModelChange)="updateAllComplete()" [ngModelOptions]="{standalone: true}">
+                              {{subtask.name}}
+                            </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </section>
+                  <section class="col-4">
+                    <div>
+                      <span>
+                        <mat-checkbox class="title-module" [checked]="allCompleteCheck" color="primary"
+                          [indeterminate]="someCompleteCheck()" (change)="setAllCheck($event.checked)">
+                          {{moduleCheck2.name}}
+                        </mat-checkbox>
+                      </span>
+                      <span class="list-module">
+                        <ul>
+                          <li *ngFor="let subtask of moduleCheck2.subtasks">
+                            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                              (ngModelChange)="updateAllCompleteCheck()" [ngModelOptions]="{standalone: true}">
+                              {{subtask.name}}
+                            </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </section>
+                  <section class="col-4">
+                    <div>
+                      <span>
+                        <mat-checkbox class="title-module" [checked]="allCompleteStatus" color="primary"
+                          [indeterminate]="someComplete()" (change)="setAllStatus($event.checked)">
+                          {{moduleCheck3.name}}
+                        </mat-checkbox>
+                      </span>
+                      <span class="list-module">
+                        <ul>
+                          <li *ngFor="let subtask of moduleCheck3.subtasks">
+                            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                              (ngModelChange)="updateAllCompleteStatus()" [ngModelOptions]="{standalone: true}">
+                              {{subtask.name}}
+                            </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+            </div>
+          </div>
+         <!--  <div class="col-5 estado">
+            <div fxLayout class="module">
+              <div class="content-img">
+                <img src="assets/icons/module/movil.svg">
+              </div>
+              <h3>PERFIL WEB</h3>
+            </div>
+            <div class="col-12">
+              <div class="card-module">
+                <div class="row">
+                  <section class="col-6">
+                    <div>
+                      <span>
+                        <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                          [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                          {{moduleCheck4.name}}
+                        </mat-checkbox>
+                      </span>
+                      <span class="list-module">
+                        <ul>
+                          <li *ngFor="let subtask of moduleCheck4.subtasks">
+                            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                              (ngModelChange)="updateAllComplete()" [ngModelOptions]="{standalone: true}">
+                              {{subtask.name}}
+                            </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </section>
+                  <section class="col-6">
+                    <div>
+                      <span>
+                        <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
+                          [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                          {{moduleCheck5.name}}
+                        </mat-checkbox>
+                      </span>
+                      <span class="list-module">
+                        <ul>
+                          <li *ngFor="let subtask of moduleCheck5.subtasks">
+                            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                              (ngModelChange)="updateAllComplete()" [ngModelOptions]="{standalone: true}">
+                              {{subtask.name}}
+                            </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+            </div>
+          </div> -->
+        </div>
+      </nucleo-card>
+
+      <nucleo-card>
+        <div fxLayout fxLayoutAlign="space-between center" class="">
+          <h2>5. Contraseña </h2>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between center" class="sub-title mb-4">
+          <span>Seleccione el tipo de contraseña para los usuarios.</span>
+        </div>
+
+
+
+        <div class="form-group row mb-2">
+          <div class="col-sm-8">
+            <mat-radio-group aria-label="" aria-labelledby="" formControlName="clave">
+              <div class="m-3">
+                <mat-radio-button [value]="1" color="primary" [checked]="true">RUT</mat-radio-button><br>
+                <span class="span-radio">El rut de cada usuario se usa como contraseña <br>(Sin punto ni guón). </span>
+              </div>
+              <div class="m-3">
+                <mat-radio-button [value]="0" color="primary">PIN</mat-radio-button><br>
+                <span class="span-radio">PIN único para todos los nuevos usuarios <br>definidos por el
+                  administrador.</span>
+              </div>
+
+            </mat-radio-group>
+          </div>
+        </div>
+
+
+      </nucleo-card>
+      <div style="float: right;" class="p-5 mb-5">
+        <button type="button" mat-raised-button color="warn" (click)="cancelar()">
+          <span>Cancelar</span>
+        </button>
+        <button type="button" mat-raised-button color="primary" class="btn-save" (click)="guardar()">
+          <span>Guardar</span>
+        </button>
       </div>
 
-
-    </nucleo-card>
-    <div style="float: right;" class="p-5 mb-5">
-      <button type="button" mat-raised-button color="warn">
-        <span>Cancelar</span>
-      </button>
-      <button type="button" mat-raised-button color="primary" class="btn-save">
-        <span>Guardar</span>
-      </button>
-    </div>
-
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</form>

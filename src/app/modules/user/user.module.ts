@@ -19,6 +19,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReporteUserComponent } from './interfaces/reporte-user/reporte-user.component';
 import { SuperAdministradorUserComponent } from './interfaces/super-administrador-user/super-administrador-user.component';
 import { NewSuperUserComponent } from './interfaces/new-super-user/new-super-user.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { RutModule } from 'rut-chileno';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NewSuperUserComponent } from './interfaces/new-super-user/new-super-use
     MatSelectModule,
     MatCheckboxModule,
     UserRoutingModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule,
+    RutModule
   ]
 })
 export class UserModule { }

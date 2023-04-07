@@ -5,16 +5,16 @@
                 <span>Nuevo</span>
             </button>  
     </div>
-    <nucleo-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="0"></nucleo-paginator>
+    <nucleo-paginator [length]="totalRecords" [pageSize]="pageSize" [pageIndex]="currentPage" (onChangePage)="changePage($event)"></nucleo-paginator>
     <perfect-scrollbar class="heightMaxPerfectScrollBar">
         <nucleo-table [metaData]="metaData" [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let row" class="align-right">
-                    <button mat-icon-button class="btn-action" matTooltip="Editar">
+                    <button mat-icon-button class="btn-action" (click)="editar(row)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="btn-action" matTooltip="Elimintar">
+                    <button mat-icon-button class="btn-action" (click)="disable(row.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

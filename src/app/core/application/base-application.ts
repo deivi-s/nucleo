@@ -16,10 +16,24 @@ export abstract class BaseApplication<Entity, Repository extends Base<Entity>> {
   }
 
   insert(entity: Partial<Entity>) {
+  /*   console.log('entity', entity); */
     return this.repository.insert(entity);
   }
 
   delete(id: number) {
     return this.repository.delete(id);
+  }
+
+  listCompany() {
+    console.log(222);
+    return this.repository.listCompany();
+  }
+
+  listBranchOffice(id: number) {
+    return this.repository.listBranchOffice(id);
+  }
+
+  listProject(id: number) {
+    return this.repository.listProject(id);
   }
 }
