@@ -47,5 +47,7 @@ export class UserInfrastructure
     return this.http.get<any[]>(`${environment.apiPath}/empresas/holding/${id_holding}`);
   }
 
-
+  getUser(id_user: number): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiPath}/usuarios/${id_user}`);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { UserInfrastructure } from '../../infrastructure/user.infraestructure';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +21,7 @@ export interface Task {
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.scss']
 })
-export class NewUserComponent implements OnInit {
+export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild('fileInput') fileInput !: ElementRef;
   fileAttr = 'Nombre archivo seleccionado';
 
@@ -86,7 +86,7 @@ export class NewUserComponent implements OnInit {
 
   list: any = [];
   panelOpenState = false;
-  companyList: any = [];
+  companyList: any[] = [];
   holdingList: any = [];
   banchOfficeList: any = [];
   projectList: any = [];
@@ -95,45 +95,178 @@ export class NewUserComponent implements OnInit {
   userDataAdmin: any;
   photo: string;
   submited = false;
+  idUser: number;
 
+  holdingSeleccionada: number;
+  empresasSeleccionadas: any[] = [];
+  sucursalesSeleccionadas: any[];
+  proyectosSeleccionadas: any[] = [];
+
+  check = false;
   constructor(
     private readonly userAdmin: UserInfrastructure,
     private formBuilder: FormBuilder,
     private router: Router,
     private readonly userApplication: UserApplication,
     private routerActive: ActivatedRoute,
-    private rutService: RutService
-  ) { }
+    private rutService: RutService,
+    private cdRef: ChangeDetectorRef
+  ) {  this.loadFormData(); }
 
   ngOnInit(): void {
-    this.companyListUser();
     this.holdingListUser();
-    this.loadForm();
+    this.companyListUser();
+    this.loadFormData();
+
+
+
   }
+  ngAfterViewInit(): void {
+   /*  this.loadFormData(); */
+  }
+
+  ngAfterViewChecked() {
+  this.cdRef.detectChanges();
+    
+  }
+
+  loadFormData(){
+    this.loadForm();
+  this.loadForm();
+    this.idUser = Number(this.routerActive.snapshot.paramMap.get('id'));
+    if (this.idUser) {
+      this.getDataUser(this.idUser);
+    }
+    
+  }
+
+  compararProyecto(actual: any, evalue: any) {
+    if (actual.id == evalue?.id)
+      return true;
+    else return false
+  }
+
+  compararSucursal(actual: any, evalue: any) {
+    if (actual.id == evalue?.id)
+      return true;
+    else return false
+  }
+
+  comparar(actual: any, evalue: any) {
+    if (actual.id == evalue?.id_empresa)
+      return true;
+    else return false
+  }
+
+  compararHolding(actual: any, evalue: any) {
+    if (actual?.id === evalue)
+      return true;
+    else return false
+  }
+
+  getDataUser(id: number) {
+    this.banchOfficeList = [];
+    this.userAdmin.getUser(id).subscribe({
+      next: (data: any) => {
+        this.userDataAdmin = data;
+        this.empresasSeleccionadas = data.empresa;
+        this.sucursalesSeleccionadas = data.sucursal;
+        this.proyectosSeleccionadas = data.proyecto;
+        this.holdingSeleccionada = data.user.id_holding;
+        this.loadForm();
+        this.sucursalesSeleccionadas.map((suc) => {
+          this.sucursales(suc.id_empresa, this.sucursalesSeleccionadas);
+          this.projects(suc.id_sucursal, this.proyectosSeleccionadas);
+        });
+
+      },
+    })
+  }
+
+  validateDataProject(data: any) {
+    if (this.projectList.length === 0) {
+      this.projectList.push(data);
+      return;
+    } else if (data) {
+      let res = this.projectList.find((res: any) => res.id === data.id);
+      !res ? this.projectList.push(data) : '';
+    }
+  }
+
+  projects(id_sucursal: number, proyectos?: any) {
+    this.userAdmin.listProject(id_sucursal).subscribe({
+      next: (data: any) => {
+        data.map((res: any) => {
+          this.validateDataProject(res);
+        });
+
+        if (proyectos) {
+          let proyecto: any = [];
+          proyectos.map((proy: any) => {
+            proyecto.push({ id: proy.id_proyecto, id_sucursal: proy.id_usuario_empresa_sucursal, id_proyecto: proy.id_proyecto })
+          })
+          this.users.controls['proyecto'].setValue(proyecto)
+        }
+      },
+    });
+  }
+
+  sucursales(id_empresa: number, suscursales?: any) {
+    this.userAdmin.listBranchOffice(id_empresa).subscribe({
+      next: (data: any) => {
+        data.map((res: any) => {
+          this.validateData(res);
+        });
+        if (suscursales) {
+          let sucursal: any = [];
+          suscursales.map((suc: any) => {
+
+            sucursal.push({ id: suc.id_sucursal, id_empresa: suc.id_empresa })
+          })
+          this.users.controls['sucursal'].setValue(sucursal)
+        }
+      },
+    });
+  }
+
+  validateData(data: any) {
+    if (this.banchOfficeList.length === 0) {
+      this.banchOfficeList.push(data);
+      return;
+    } else if (data) {
+      let res = this.banchOfficeList.find((res: any) => res.id === data.id);
+      if (!res) {
+        this.banchOfficeList.push(data);
+      }
+
+    }
+  }
+
+
 
   loadForm() {
     this.users = this.formBuilder.group({
-      nombre: new FormControl(this.userDataAdmin?.nombre, Validators.required),
-      apellidos: new FormControl(this.userDataAdmin?.apellidos, Validators.required),
-      rut: new FormControl(this.userDataAdmin?.rut, [Validators.required, this.rutService.validaRutForm]),
-      personal: new FormControl(),
-      email: new FormControl(this.userDataAdmin?.email, [Validators.required, Validators.email]),
-      telefono: new FormControl(this.userDataAdmin?.telefono),
-      contacto: new FormControl(this.userDataAdmin?.contacto),
+      nombre: new FormControl(this.userDataAdmin?.user.nombre, Validators.required),
+      apellidos: new FormControl(this.userDataAdmin?.user.apellidos, Validators.required),
+      rut: new FormControl(this.userDataAdmin?.user.rut, [Validators.required, this.rutService.validaRutForm]),
+      personal: new FormControl(this.userDataAdmin?.user.personal, Validators.email),
+      email: new FormControl(this.userDataAdmin?.user.email, [Validators.required, Validators.email]),
+      telefono: new FormControl(this.userDataAdmin?.user.telefono),
+      contacto: new FormControl(this.userDataAdmin?.user.contacto),
       clave: new FormControl(1),
       tipo: new FormControl(2),
       foto: new FormControl(''),
-      area: new FormControl(this.userDataAdmin?.area, Validators.required),
-      cargo: new FormControl(this.userDataAdmin?.cargo, Validators.required),
-      cuadrilla: new FormControl(this.userDataAdmin?.cuadrilla, Validators.required),
-      asignacion: new FormControl(this.userDataAdmin?.asignacion, Validators.required),
+      area: new FormControl(this.userDataAdmin?.user.area, Validators.required),
+      cargo: new FormControl(this.userDataAdmin?.user.cargo, Validators.required),
+      cuadrilla: new FormControl(this.userDataAdmin?.user.cuadrilla, Validators.required),
+      asignacion: new FormControl(this.userDataAdmin?.user.asignacion || 1, Validators.required),
       holding: new FormControl(),
       empresa: new FormControl([], Validators.required),
       sucursal: new FormControl([], Validators.required),
       proyecto: new FormControl([], Validators.required),
     });
-  }
 
+  }
   holdingListUser() {
     this.userAdmin.listHolding().subscribe({
       next: (data: any) => {
@@ -156,10 +289,7 @@ export class NewUserComponent implements OnInit {
         this.companyList = data;
       },
     });
-  }
 
-  addList() {
-    this.list.push(1);
   }
 
   deleteRow(row: any) {
@@ -259,7 +389,6 @@ export class NewUserComponent implements OnInit {
   }
 
   changeHolding(holding: any) {
-    console.log(holding);
     this.users.controls['empresa'].patchValue([]);
     this.users.controls['sucursal'].patchValue([]);
     this.users.controls['sucursal'].patchValue([]);
@@ -273,86 +402,43 @@ export class NewUserComponent implements OnInit {
     this.companyListUser();
   }
 
-  sucursales(id_empresa: number) {
-    this.userAdmin.listBranchOffice(id_empresa).subscribe({
-      next: (data: any) => {
-        data.map((res: any) => {
-          this.validateData(res);
-        })
-      },
-    });
-  }
 
-  validateData(data: any, empresas: any = null) {
-    if (this.banchOfficeList.length === 0) {
-      this.banchOfficeList.push(data);
-      return;
-    } else if (data) {
-      let res = this.banchOfficeList.find((res: any) => res.id === data.id);
-      if (!res) {
 
-        this.banchOfficeList.push(data);
 
-      }
-      /*  !res ? this.banchOfficeList.push(data) : ''; */
-    }
-  }
-
-  validateDataProject(data: any) {
-    if (this.projectList.length === 0) {
-      this.projectList.push(data);
-      return;
-    } else if (data) {
-      let res = this.projectList.find((res: any) => res.id === data.id);
-      !res ? this.projectList.push(data) : '';
-    }
-  }
-
-  projects(id_sucursal: number) {
-    this.userAdmin.listProject(id_sucursal).subscribe({
-      next: (data: any) => {
-        data.map((res: any) => {
-          this.validateDataProject(res);
-        })
-      },
-    });
-  }
-
-  //actual
   changeCompany(dataCompany: any) {
-    this.banchOfficeList = [];
-    this.projectList = [];
-    this.empresas = [];
-    this.users.controls['sucursal'].patchValue([]);
-    this.users.controls['proyecto'].patchValue([]);
-    dataCompany.map((data: any) => {
-      this.sucursales(data.id);
-    });
+    if (dataCompany) {
+      this.banchOfficeList = [];
+      this.projectList = [];
+      this.empresas = [];
+      this.users.controls['sucursal'].patchValue([]);
+      this.users.controls['proyecto'].patchValue([]);
+      dataCompany.map((data: any) => {
+        this.sucursales(data.id);
+      });
+    }
   }
 
   changeBranchCompany(dataBranchCompany: any) {
+
     this.projectList = [];
     this.users.controls['proyecto'].patchValue([]);
-    dataBranchCompany.map((data: any) => {
-      this.projects(data.id);
-    });
+    if (dataBranchCompany) {
+      dataBranchCompany.map((data: any) => {
+        this.projects(data.id);
+      });
+    }
+
   }
 
-  guardar() {
-
-
-    this.submited = true;
-
-    try {
-
+  /*   validarSucursalProyecto() {
       let empresas = this.users.value.empresa;
       let sucursal = this.users.value.sucursal;
       let proyecto = this.users.value.proyecto;
       this.empresas = [];
-
+  
       empresas.map((emp: any) => {
-        let suc = sucursal.filter((sucursal: any) => sucursal.id_empresa === emp.id).map((suc: any) => {
-          let proy = proyecto.filter((proyecto: any) => proyecto.id_sucursal === suc.id).map((pro: any) => { return { id_usuario_empresa_sucursal: pro.id_sucursal, id_proyecto: pro.id } });
+        let suc = sucursal?.filter((sucursal: any) => sucursal.id_empresa === emp.id).map((suc: any) => {
+          let proy = proyecto?.filter((proyecto: any) => proyecto.id_sucursal === suc.id).map((pro: any) => { return { id_usuario_empresa_sucursal: pro.id_sucursal, id_proyecto: pro.id } });
           return {
             id_empresa: suc.id_empresa, id_sucursal: suc.id, proyecto: proy
           }
@@ -363,8 +449,50 @@ export class NewUserComponent implements OnInit {
           sucursal: suc
         })
       });
+  
+      console.log('this.empresas', this.empresas);
+    }
+   */
+
+  validarSucursalProyecto() {
+    let empresas = this.users.value.empresa;
+    let sucursal = this.users.value.sucursal;
+    let proyecto = this.users.value.proyecto;
+    this.empresas = [];
+
+    empresas.map((emp: any) => {
+      let filterSucursal = sucursal?.filter((sucursal: any) => emp?.nombre ? sucursal.id_empresa === emp.id : sucursal.id_empresa === emp.id_empresa);
+
+      let mapSucursal = filterSucursal.map((suc: any) => {
+
+        let filterProyecto = proyecto?.filter((proyecto: any) => proyecto.id_sucursal === suc.id);
+
+        let mapProyecto = filterProyecto.map((pro: any) => {
+          return { id_usuario_empresa_sucursal: pro.id_sucursal, id_proyecto: pro.id }
+        });
+
+        return {
+          id_empresa: suc.id_empresa, id_sucursal: suc.id, proyecto: mapProyecto
+        }
+      });
+
+      this.empresas.push({
+        id_holding: this.users.value.holding ? this.users.value.holding.id : 0,
+        id_empresa: emp?.nombre ? emp.id : emp.id_empresa,
+        sucursal: mapSucursal
+      })
+    });
+
+  }
 
 
+
+
+  guardar() {
+    this.submited = true;
+    try {
+
+      this.validarSucursalProyecto();
       if (!this.users.valid) {
         swal.fire({
           icon: "warning",
@@ -377,12 +505,17 @@ export class NewUserComponent implements OnInit {
         return;
       }
 
+      let user = this.users.value;
+      user.empresa = this.empresas;
+      delete user.proyecto;
+      delete user.sucursal;
+      delete user.holding;
+
       this.users.value.clave ? this.users.value.clave = this.encriptar(this.users.value.rut) : this.users.value.clave = this.encriptar(environment.password);
       this.users.value.foto = this.photo;
 
-      if (this.userDataAdmin) {
-        /* const id = Number(this.routerActive.snapshot.paramMap.get('id'));
-        this.userApplication.update(id, this.users.value).subscribe({
+      if (this.idUser) {
+        this.userApplication.update(this.idUser, this.users.value).subscribe({
           next: () => {
             swal.fire({
               icon: "success",
@@ -404,9 +537,12 @@ export class NewUserComponent implements OnInit {
               confirmButtonText: "Continuar"
             });
           },
-        }); */
+        });
+
+
       } else {
-       /*  this.userApplication.insert(this.users.value).subscribe({
+
+        this.userApplication.insert(user).subscribe({
           next: () => {
             swal.fire({
               icon: "success",
@@ -428,17 +564,16 @@ export class NewUserComponent implements OnInit {
               confirmButtonText: "Continuar"
             });
           },
-        }); */
+        });
       }
 
 
     } catch (error) {
-
     }
 
 
-    console.log('EMPRESAS', this.empresas);
-    console.log('USER', this.users.value);
+    /* console.log('EMPRESAS', this.empresas);
+    console.log('USER', this.users.value); */
 
 
 

@@ -1,5 +1,6 @@
+import { Injectable } from '@angular/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-
+@Injectable()
 export class Paginator extends MatPaginatorIntl {
   override itemsPerPageLabel = 'Registros por página:';
   override nextPageLabel = 'SIGUIENTE PÁGINA';
