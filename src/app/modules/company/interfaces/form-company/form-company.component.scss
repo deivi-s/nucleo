@@ -157,3 +157,27 @@ pt-5 {
   justify-content: center;
   align-items: center;
 }
+
+.mat-expansion-panel-header-title{
+  font-family: "Montserrat Bold";
+  color: #01595c;
+  font-size: 1.25em;
+}
+
+.mat-expansion-panel-header{
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.05), 0px 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+.btn-save {
+  margin-left: 3px;
+}
+
+.btn-delete-branch{
+  padding-bottom: 0px;
+    background: #ffffff;
+    color: #959393;
+    border: none;
+    border-radius: 5px;
+    margin-left: 13px;
+}

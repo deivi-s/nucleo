@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/config/services/layout.service';
 import Chart from 'chart.js/auto';
+import { UserInfrastructure } from '../../infrastructure/user.infraestructure';
 
 @Component({
   selector: 'nucleo-dashboard',
@@ -10,8 +11,8 @@ import Chart from 'chart.js/auto';
 })
 export class DashboardComponent implements OnInit {
 
-/*   @ViewChild('doughnutCanvas2') doughnutCanvas: ElementRef | undefined;
-  doughnutChart: any */
+  /*   @ViewChild('doughnutCanvas2') doughnutCanvas: ElementRef | undefined;
+    doughnutChart: any */
 
   @ViewChild('barCanvas') barCanvas: ElementRef | undefined;
   barChart: any
@@ -25,8 +26,26 @@ export class DashboardComponent implements OnInit {
   @ViewChild('doughnutCanvas1') doughnutCanvas1: ElementRef | undefined;
   doughnutChart1: any
 
+  registrados = 0;
+  activos = 0;
+  pausados = 0;
 
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router, private readonly userAdmin: UserInfrastructure) {
+  }
+
+
+  ngOnInit(): void {
+
+
+    this.userAdmin.reporte().subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.registrados = data.todos.toString().padStart(2, 0);
+        this.activos = data.activo.toString().padStart(2, 0);
+        this.pausados = data.pausado.toString().padStart(2, 0);
+      },
+    });
+
   }
 
   ngAfterViewInit() {
@@ -55,26 +74,26 @@ export class DashboardComponent implements OnInit {
       },
     });
 
- /*    this.doughnutChart = new Chart(this.doughnutCanvas?.nativeElement, {
-      type: 'doughnut',
-      data: {
-      
-        datasets: [
-          {
-
-            data: [30, 70],
-            backgroundColor: [
-              '#F2B600',
-              '#FF6B00'
-            ],
-            hoverBackgroundColor: [
-              '#F2B600',
-              '#FF6B00'
-            ],
-          },
-        ],
-      },
-    }); */
+    /*    this.doughnutChart = new Chart(this.doughnutCanvas?.nativeElement, {
+         type: 'doughnut',
+         data: {
+         
+           datasets: [
+             {
+   
+               data: [30, 70],
+               backgroundColor: [
+                 '#F2B600',
+                 '#FF6B00'
+               ],
+               hoverBackgroundColor: [
+                 '#F2B600',
+                 '#FF6B00'
+               ],
+             },
+           ],
+         },
+       }); */
 
     this.barChart = new Chart(this.barCanvas?.nativeElement, {
       type: 'bar',
@@ -109,7 +128,7 @@ export class DashboardComponent implements OnInit {
           data: [120, 320, 150],
           label: '',
           backgroundColor: ["#01595C"],
-          
+
         }],
       },
       options: {
@@ -133,7 +152,7 @@ export class DashboardComponent implements OnInit {
     // Podemos tener varios conjuntos de datos. Comencemos con uno
     const datosVentas2020 = {
       label: "Minera SPENCE S.A",
-      data: [5000, 1500, 8000, 5102,9000], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+      data: [5000, 1500, 8000, 5102, 9000], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
       backgroundColor: '#01595C', // Color de fondo
       borderColor: '#01595C', // Color del borde
       borderWidth: 1,// Ancho del borde
@@ -143,16 +162,16 @@ export class DashboardComponent implements OnInit {
 
       type: 'line',// Tipo de gráfica
       data: {
-          labels: etiquetas,
-          datasets: [
-              datosVentas2020,
-              // Aquí más datos...
-          ]
+        labels: etiquetas,
+        datasets: [
+          datosVentas2020,
+          // Aquí más datos...
+        ]
       },
       options: {
-          scales: {
-           
-          },
+        scales: {
+
+        },
       }
 
       /*   type: 'line',
@@ -181,8 +200,6 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
 
 
 }

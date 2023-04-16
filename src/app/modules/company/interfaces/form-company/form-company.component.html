@@ -1,435 +1,485 @@
-<nucleo-card>
-    <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>HOLDING</h2>
-    </div>
-    <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>Datos importantes</h2>
-    </div>
-
-
-    <div class="form-group row mb-3">
-        <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Nombre holding:</label>
-        <div class="col-sm-8">
-            <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Escribir nombre holding">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Rut:</label>
-        <div class="col-sm-8">
-            <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Escribir rut empresa">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Escribir dirección:</label>
-        <div class="col-sm-8">
-            <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                placeholder="Escribir nombre holding"><!-- 
-            <div class="form-text invalid-feedback ng-star-inserted"> This field is required. </div> -->
-        </div>
-    </div>
-</nucleo-card>
-<!-- 
-<nucleo-card>
-    <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>NOMBRE EMPRESA 1</h2>
-    </div>
-</nucleo-card> -->
-
-<nucleo-card class="card-expansion">
-        <div *ngFor="let item of list">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Self aware panel
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel>
-        <div style="height: 20px;"></div>
-        </div>
-</nucleo-card>   
-
-
-<nucleo-card>
-    <div fxLayout fxLayoutAlign="space-between center" class="">
-        <h2>NOMBRE EMPRESA 1</h2>
-        <mat-icon class="icon-display">expand_more</mat-icon>
-    </div>
-    <hr
-        style="box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);">
-    <div class="mb-5 mt-5">
+<form [formGroup]="company">
+    <nucleo-card>
         <div fxLayout fxLayoutAlign="space-between center" class="">
-            <h2>1 Datos importantes</h2>
+            <h2>HOLDING</h2>
         </div>
+        <div fxLayout fxLayoutAlign="space-between center" class="">
+            <h2>Datos importantes</h2>
+        </div>
+
+
         <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Nombre Empresa:</label>
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Nombre holding:</label>
             <div class="col-sm-8">
-                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                    placeholder="Escribir nombre empresa">
+                <input type="text" formControlName="nombre" id="requiredText" class="form-control ng-pristine"
+                    placeholder="Escribir nombre holding">
             </div>
         </div>
         <div class="form-group row mb-3">
             <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Rut:</label>
             <div class="col-sm-8">
-                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
+                <input type="text" formControlName="rut" id="requiredText" class="form-control ng-pristine"
                     placeholder="Escribir rut empresa">
             </div>
         </div>
         <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Dirección:</label>
+            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Escribir dirección:</label>
             <div class="col-sm-8">
-                <input type="text" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                    placeholder="Escribir dirección">
-            </div>
-        </div>
-        <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Logotipo:</label>
-            <div class="col-sm-5">
-                <mat-form-field>
-                    <div>
-                        <mat-toolbar>
-                            <button mat-flat-button color="primary" mat-raised-button class="btn-upload-file">Cargar
-                                archivo</button>
-                            <input class="input-file" matInput [(ngModel)]="fileAttr" readonly name="name" />
-                        </mat-toolbar>
-                        <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple"
-                            accept="image/*" (change)="uploadFileEvt($event)" />
-                    </div>
-                </mat-form-field>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-5">
-        <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Colores institucionales:</label>
-            <div class="col-sm-1">
-                <input type="color" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                    placeholder="Escribir dirección">
-            </div>
-            <div class="col-sm-1">
-                <input type="color" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                    placeholder="Escribir dirección">
-            </div>
-            <div class="col-sm-1">
-                <input type="color" formcontrolname="requiredText" id="requiredText" class="form-control ng-pristine "
-                    placeholder="Escribir dirección">
+                <input type="text" formControlName="direccion" id="requiredText" class="form-control ng-pristine"
+                    placeholder="Escribir nombre holding">
             </div>
         </div>
 
-        <div class="form-group row mb-3 estado">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Estado:</label>
-            <div class="col-sm-2">
-                <mat-form-field appearance="fill" color="primary">
-                    <mat-select matNativeControl [value]="'1'">
-                        <mat-option value="1" value="1">Activo</mat-option>
-                        <mat-option value="0" value="0">Inactivo</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-    </div>
+    </nucleo-card>
+    <div formArrayName="empresas">
+        <nucleo-card class="card-expansion">
+            <div *ngFor="let item of list; let element=index;">
+                <div fxLayout>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                        style="width: 100%;">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                NUEVA EMPRESA
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
 
-    <div class="mb-5 mt-5 pt-5">
-        <hr class="mb-5">
-        <div fxLayout fxLayoutAlign="space-between center" class="">
-            <h2>2. Módulos visibles</h2>
-        </div>
+                        <div style="padding-top: 20px; padding-bottom: 30px;" [formGroupName]="element">
 
-        <div class="row">
-            <div class="col-3 estado">
-                <div fxLayout class="module">
-                    <img src="assets/icons/module/check.svg">
-                    <h3>MÓDULO CHECK</h3>
-                </div>
-                <div class="col-12">
-                    <div class="card-module">
-                        <section>
-                            <span>
-                                <mat-checkbox class="title-module" [checked]="allComplete" color="primary"
-                                    [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                                    {{moduleCheck.name}}
-                                </mat-checkbox>
-                            </span>
-                            <span class="list-module">
-                                <ul>
-                                    <li *ngFor="let subtask of moduleCheck.subtasks">
-                                        <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                                            (ngModelChange)="updateAllComplete()">
-                                            {{subtask.name}}
-                                        </mat-checkbox>
-                                    </li>
-                                </ul>
-                            </span>
-                        </section>
-                    </div>
-                </div>
-            </div>
+                            <div class="mb-5 mt-5">
+                                <div fxLayout fxLayoutAlign="space-between center" class="">
+                                    <h2>1 Datos importantes</h2>
+                                </div>
+                                <div class="form-group row mb-3">
+                                    <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Nombre
+                                        Empresa:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" formControlName="nombre" class="form-control ng-pristine"
+                                            placeholder="Escribir nombre empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-3">
+                                    <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Rut:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" formControlName="rut" class="form-control ng-pristine"
+                                            placeholder="Escribir rut empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-3">
+                                    <label for="requiredText"
+                                        class="offset-sm-1 col-sm-2 col-form-label">Dirección:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" formControlName="direccion" class="form-control ng-pristine"
+                                            placeholder="Escribir dirección">
+                                    </div>
+                                </div>
 
-            <div class="col-3 estado">
-                <div fxLayout class="module">
-                    <img src="assets/icons/module/check.svg">
-                    <h3>MÓDULO ESTADOS</h3>
-                </div>
-                <div class="col-12">
-                    <div class="card-module">
-                        <section>
-                            <span>
-                                <mat-checkbox class="title-module" [checked]="allCompleteState" color="primary"
-                                    [indeterminate]="someCompleteState()" (change)="setAll($event.checked)">
-                                    {{moduleState.name}}
-                                </mat-checkbox>
-                            </span>
-                            <span class="list-module">
-                                <ul>
-                                    <li *ngFor="let subtask of moduleState.subtasks">
-                                        <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                                            (ngModelChange)="updateAllCompleteState()">
-                                            {{subtask.name}}
-                                        </mat-checkbox>
-                                    </li>
-                                </ul>
-                            </span>
-                        </section>
-                    </div>
-                </div>
-            </div>
+                                <div class="form-group row mb-3">
+                                    <label for="requiredText"
+                                        class="offset-sm-1 col-sm-2 col-form-label">Logotipo:</label>
+                                    <div class="col-sm-5">
+                                        <mat-form-field>
+                                            <div>
+                                                <mat-toolbar>
+                                                    <button mat-flat-button color="primary" mat-raised-button
+                                                        class="btn-upload-file">Cargar
+                                                        archivo</button>
+                                                    <input class="input-file" matInput [(ngModel)]="fileAttr" readonly
+                                                        [ngModelOptions]="{standalone: true}" />
+                                                </mat-toolbar>
+                                                <input type="file" #fileInput id="uploadFile" name="uploadFile"
+                                                    multiple="multiple" accept="image/*"
+                                                    (change)="uploadFileEvt($event)" />
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <div class="form-group row mb-3">
+                                    <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Colores
+                                        institucionales:</label>
+                                    <div class="col-sm-1">
+                                        <input type="color" id="requiredText" formControlName="color_a"
+                                            class="form-control ng-pristine" placeholder="Escribir dirección">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="color" id="requiredText" formControlName="color_b"
+                                            class="form-control ng-pristine" placeholder="Escribir dirección">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="color" id="requiredText" formControlName="color_c"
+                                            class="form-control ng-pristine" placeholder="Escribir dirección">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3 estado">
+                                    <label for="requiredText"
+                                        class="offset-sm-1 col-sm-2 col-form-label">Estado:</label>
+                                    <div class="col-sm-2">
+                                        <mat-form-field appearance="fill" color="primary">
+                                            <mat-select matNativeControl formControlName="estado">
+                                                <mat-option [value]="1">Activo</mat-option>
+                                                <mat-option [value]="2">Inactivo</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-5 mt-5 pt-5">
+                                <hr class="mb-5">
+                                <div fxLayout fxLayoutAlign="space-between center" class="">
+                                    <h2>2. Módulos visibles</h2>
+                                </div>
+
+                                 <div class="row">
+                                    <div class="col-3 estado">
+                                        <div fxLayout class="module">
+                                            <img src="assets/icons/module/check.svg">
+                                            <h3>MÓDULO CHECK</h3>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card-module">
+                                                <section>
+                                                    <span>
+                                                        <mat-checkbox class="title-module" [checked]="allComplete[element]"
+                                                            color="primary" [indeterminate]="someComplete(element)"
+                                                            (change)="setAll($event.checked, element)">
+                                                            {{moduleCheck[element].name}}
+                                                        </mat-checkbox>
+                                                    </span>
+                                                    <span class="list-module">
+                                                        <ul>
+                                                            <li *ngFor="let subtask of moduleCheck[element].subtasks">
+                                                                <mat-checkbox [(ngModel)]="subtask.completed"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    [color]="subtask.color"
+                                                                    (ngModelChange)="updateAllComplete(element)">
+                                                                    {{subtask.name}}
+                                                                </mat-checkbox>
+                                                            </li>
+                                                        </ul>
+                                                    </span>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3 estado">
+                                        <div fxLayout class="module">
+                                            <img src="assets/icons/module/check.svg">
+                                            <h3>MÓDULO ESTADOS</h3>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card-module">
+                                                <section>
+                                                    <span>
+                                                        <mat-checkbox class="title-module" [checked]="allCompleteState[element]"
+                                                            color="primary" [indeterminate]="someCompleteState(element)"
+                                                            (change)="setAllState($event.checked, element)">
+                                                            {{moduleState[element].name}}
+                                                        </mat-checkbox>
+                                                    </span>
+                                                    <span class="list-module">
+                                                        <ul>
+                                                            <li *ngFor="let subtaskState of moduleState[element].subtasks">
+                                                                <mat-checkbox [(ngModel)]="subtaskState.completed"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    [color]="subtaskState.color"
+                                                                    (ngModelChange)="updateAllCompleteState(element)">
+                                                                    {{subtaskState.name}}
+                                                                </mat-checkbox>
+                                                            </li>
+                                                        </ul>
+                                                    </span>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-        </div>
-    </div>
-    <div class="mb-5 mt-5 pt-5">
-        <hr class="mb-5">
-        <div fxLayout fxLayoutAlign="space-between center" class="">
-            <h2>3. Sucursales y proyectos</h2>
-        </div>
-        <div class="form-group row mb-3">
-            <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Sucursal:</label>
-            <div class="col-sm-9">
-                <div fxLayout fxLayoutAlign="space-between center">
-                    <input type="text" formcontrolname="requiredText" id="requiredText"
-                        class="form-control ng-pristine " placeholder="Escribir Nombre de la sucursal">
-                    <div style="width: 53px;"></div>
-                </div>
+                                </div>
+                            </div>
+                            <div class="mb-5 mt-5 pt-5">
+                                <hr class="mb-5">
+                                <div fxLayout fxLayoutAlign="space-between center" class="">
+                                    <h2>3. Sucursales y proyectos</h2>
+                                </div>
+                                <div >
+                                    <div *ngFor="let itemBranch of listBranch[element]; let elementBranch=index;" >
+                                        <div style="padding-top: 20px; padding-bottom: 30px;">
+                                            <div class="form-group row mb-3">
+                                                <label for="requiredText"
+                                                    class="offset-sm-1 col-sm-2 col-form-label">Sucursal:</label>
+                                                <div class="col-sm-9">
+                                                    <div fxLayout fxLayoutAlign="space-between center">
+                                                        <input type="text" [(ngModel)]="itemBranch.nombre" class="form-control ng-pristine" [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Escribir Nombre de la sucursal">
+                                                            <button type="button" color="primary" class="btn-delete-branch"  (click)="deleteRowSucursal(element)">
+                                                            <mat-icon>clear</mat-icon>
+                                                        </button>
+                                                    </div>
 
-            </div>
-        </div>
-        <div class="offset-1 col-11">
-            <div class="form-group row mb-3">
-                <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label">Proyecto:</label>
-                <div class="col-sm-9">
-                    <div fxLayout fxLayoutAlign="space-between center">
-                        <input type="text" formcontrolname="requiredText" id="requiredText"
-                            class="form-control ng-pristine " placeholder="Escribir Nombre de proyecto">
-                        <div style="width: 53px;"></div>
-                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="offset-1 col-11" *ngFor="let proyect of itemBranch.proyectos; let elementProyect=index;">
+                                                <div class="form-group row mb-3">
+                                                    <label for="requiredText"
+                                                        class="offset-sm-1 col-sm-2 col-form-label">Proyecto:</label>
+                                                    <div class="col-sm-9">
+                                                        <div fxLayout fxLayoutAlign="space-between center">
+                                                            <input type="text" [(ngModel)]="proyect.nombre" class="form-control ng-pristine" [ngModelOptions]="{standalone: true}" placeholder="Escribir Nombre de proyecto">
+                                                            <button type="button" color="primary" *ngIf="elementProyect > 0 " class="btn-delete-branch"  (click)="deleteRowProyect(element, elementBranch, elementProyect)">
+                                                                <mat-icon>clear</mat-icon>
+                                                            </button>
+                                                            <div style="width: 53px;" *ngIf="elementProyect == 0"></div>                                                       
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label for="requiredText"
+                                                        class="offset-sm-1 col-sm-2 col-form-label"></label>
+                                                    <div class="col-sm-9">
+                                                        <div fxLayout fxLayoutAlign="space-between center">
+                                                            <input type="text" [(ngModel)]="proyect.direccion" class="form-control ng-pristine" [ngModelOptions]="{standalone: true}" placeholder="Dirección de proyecto"> 
+                                                            <button type="button" color="primary" class="btn-add" *ngIf="elementProyect === 0" (click)="addProyect(element, elementBranch, elementProyect)">
+                                                                <mat-icon>add</mat-icon>
+                                                            </button>
+                                                            <div style="width: 53px;" *ngIf="elementProyect !== 0"></div>
+                                                            <div style="width: 53px;" *ngIf="elementProyect === 0"></div>
+                                                        </div>
 
-                </div>
-            </div>
-            <div class="form-group row mb-3">
-                <label for="requiredText" class="offset-sm-1 col-sm-2 col-form-label"></label>
-                <div class="col-sm-9">
-                    <div fxLayout fxLayoutAlign="space-between center">
-                        <input type="text" formcontrolname="requiredText" id="requiredText"
-                            class="form-control ng-pristine " placeholder="Dirección de proyecto">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                   
+                                </div>
 
-                        <button type="button" color="primary" class="btn-add">
-                            <mat-icon>add</mat-icon>
+
+                                <div style="float: right;">
+                                    <button type="button" mat-raised-button color="primary" (click)="addSucursal(element)">
+                                        <span>Nueva sucursal</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-5 mt-5 pt-5">
+                                <hr class="mb-5">
+                                <div fxLayout fxLayoutAlign="space-between center" class="">
+                                    <h2>4. Condiciones de plan comercial</h2>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4 estado">
+                                        <div fxLayout class="module-plan">
+                                            <h3>PLAN COMÚN PERSONALIZADO</h3>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card-module">
+                                                <div>
+                                                    <h4>Límite de usuarios</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text" formControlName="plan_comun_usuario_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text" formControlName="plan_comun_usuario_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de proyectos</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text" formControlName="plan_comun_proyecto_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text" formControlName="plan_comun_proyecto_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de almacenamiento</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_comun_almacenamiento_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_comun_almacenamiento_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 estado">
+                                        <div fxLayout class="module-plan">
+                                            <h3>PLAN FULL PERSONALIZADO</h3>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card-module">
+                                                <div>
+                                                    <h4>Límite de usuarios</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_usuario_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_usuario_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de proyectos</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_proyecto_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_proyecto_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de almacenamiento</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_almacenamiento_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_personalizado_almacenamiento_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 estado">
+                                        <div fxLayout class="module-plan">
+                                            <h3>PLAN A LA MEDIDA</h3>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card-module">
+                                                <div>
+                                                    <h4>Límite de usuarios</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text" formControlName="plan_medida_usuario_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text" formControlName="plan_medida_usuario_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de proyectos</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text" formControlName="plan_medida_proyecto_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text" formControlName="plan_medida_proyecto_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4>Límite de almacenamiento</h4>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="min">Min.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_medida_almacenamiento_min"
+                                                            class="form-control ng-pristine">
+                                                        <span class="min-un">Un.</span>
+                                                    </div>
+                                                    <div fxLayout class="min-max">
+                                                        <span class="max">Max.</span>
+                                                        <input type="text"
+                                                            formControlName="plan_medida_almacenamiento_max"
+                                                            class="form-control ng-pristine">
+                                                        <span class="max-un">Un.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </mat-expansion-panel>
+                    <div style="float: right;">
+                        <button type="button" mat-raised-button color="primary" (click)="deleteCompany(element)"
+                            style="height: 48px;margin-left: 5px;">
+                            <mat-icon>delete_outline</mat-icon>
                         </button>
                     </div>
-
                 </div>
+                <div style="height: 20px;"></div>
             </div>
-
-        </div>
-
+        </nucleo-card>
+    </div>
+    <div class="container p-0">
         <div style="float: right;">
-            <button type="button" mat-raised-button color="primary">
-                <span>Nueva sucursal</span>
+            <button type="button" mat-raised-button color="primary" (click)="addCompany()">
+                <span>Nueva Empresa</span>
             </button>
         </div>
     </div>
-
-    <div class="mb-5 mt-5 pt-5">
-        <hr class="mb-5">
-        <div fxLayout fxLayoutAlign="space-between center" class="">
-            <h2>4. Condiciones de plan comercial</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-4 estado">
-                <div fxLayout class="module-plan">
-                    <h3>PLAN COMÚN PERSONALIZADO</h3>
-                </div>
-                <div class="col-12">
-                    <div class="card-module">
-                        <div>
-                            <h4>Límite de usuarios</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de proyectos</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de almacenamiento</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4 estado">
-                <div fxLayout class="module-plan">
-                    <h3>PLAN FULL PERSONALIZADO</h3>
-                </div>
-                <div class="col-12">
-                    <div class="card-module">
-                        <div>
-                            <h4>Límite de usuarios</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de proyectos</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de almacenamiento</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4 estado">
-                <div fxLayout class="module-plan">
-                    <h3>PLAN A LA MEDIDA</h3>
-                </div>
-                <div class="col-12">
-                    <div class="card-module">
-                        <div>
-                            <h4>Límite de usuarios</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de proyectos</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Límite de almacenamiento</h4>
-                            <div fxLayout class="min-max">
-                                <span class="min">Min.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="min-un">Un.</span>
-                            </div>
-                            <div fxLayout class="min-max">
-                                <span class="max">Max.</span>
-                                <input type="text" formcontrolname="requiredText" id="requiredText"
-                                    class="form-control ng-pristine">
-                                <span class="max-un">Un.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <br><br><br>
+    <div class="container p-0">
+        <div style="float: right;" class="mb-5">
+            <button type="button" mat-raised-button color="warn" (click)="cancelar()">
+                <span>Cancelar</span>
+            </button>
+            <button type="button" mat-raised-button color="primary" class="btn-save" (click)="guardar()">
+                <span>Guardar</span>
+            </button>
         </div>
     </div>
-</nucleo-card>
-
-<div style="float: right;" class="p-5 mb-5">
-    <button type="button" mat-raised-button color="primary">
-        <span>NUEVA EMPRESA</span>
-    </button>
-</div>
+</form>

@@ -1,6 +1,6 @@
 <mat-nav-list disableRipple>
   <mat-list-item class="menu avatar">
-    <button mat-button class="profile" disableRipple>
+    <button mat-button class="profile" disableRipple routerLink="/company/dashboard">
       <img src="assets/photos/user.jpg" />
     </button>
   </mat-list-item>
@@ -45,6 +45,14 @@
       <button mat-button  disableRipple>
         <img src="assets/icons/dashboard/state.svg" />
         <span>Estados</span>
+      </button>
+    </a>
+  </mat-list-item>
+  <mat-list-item class="menu" >
+    <a routerLink="/">
+      <button mat-button  disableRipple>
+        <img src="assets/icons/dashboard/salir.svg" />
+        <span>Salir</span>
       </button>
     </a>
   </mat-list-item>

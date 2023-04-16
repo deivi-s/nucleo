@@ -15,6 +15,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DashboardComponent } from './interfaces/dashboard/dashboard.component';
 import { NewCompanyComponent } from './interfaces/new-company/new-company.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RutModule } from 'rut-chileno';
+import { DashboardPrincipalComponent } from './interfaces/dashboard-principal/dashboard-principal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ListCompanyComponent,
     CompanyComponent,
     DashboardComponent,
-    NewCompanyComponent
+    NewCompanyComponent,
+    DashboardPrincipalComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    RutModule
   ]
 })
 export class CompanyModule { }

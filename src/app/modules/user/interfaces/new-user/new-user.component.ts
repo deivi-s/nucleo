@@ -111,7 +111,7 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
     private routerActive: ActivatedRoute,
     private rutService: RutService,
     private cdRef: ChangeDetectorRef
-  ) {  this.loadFormData(); }
+  ) { this.loadFormData(); }
 
   ngOnInit(): void {
     this.holdingListUser();
@@ -122,22 +122,22 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   }
   ngAfterViewInit(): void {
-   /*  this.loadFormData(); */
+    /*  this.loadFormData(); */
   }
 
   ngAfterViewChecked() {
-  this.cdRef.detectChanges();
-    
+    this.cdRef.detectChanges();
+
   }
 
-  loadFormData(){
+  loadFormData() {
     this.loadForm();
-  this.loadForm();
+    this.loadForm();
     this.idUser = Number(this.routerActive.snapshot.paramMap.get('id'));
     if (this.idUser) {
       this.getDataUser(this.idUser);
     }
-    
+
   }
 
   compararProyecto(actual: any, evalue: any) {
@@ -267,6 +267,8 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
     });
 
   }
+
+  
   holdingListUser() {
     this.userAdmin.listHolding().subscribe({
       next: (data: any) => {

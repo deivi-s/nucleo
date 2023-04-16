@@ -10,25 +10,20 @@
           Para iniciar sesión ingresa tu correo y <br />
           la contraseña entregada por tu empleador.
         </h2>
-        <form class="my-login-validation" novalidate="">
+        <form [formGroup]="users">
           <div class="form-group">
             <label for="email">Correo electrónico</label>
-            <input id="email" type="email" class="form-control" name="email" value="" required="" autofocus="" />
-            <div class="invalid-feedback"></div>
+            <input formControlName="usuario" class="form-control" [ngClass]="{'is-invalid': submited && !users.controls['usuario'].valid }" />
+            <div class="invalid-feedback">Ingrese un correo</div>
           </div>
 
           <div class="form-group">
             <label for="password">Contraseña</label>
             <div style="position: relative" id="eye-password-0">
-              <input id="password" type="password" class="form-control" name="password" required="" data-eye=""
-                style="padding-right: 60px" />
-              <div class="invalid-feedback">Password is required</div>
-              <input type="hidden" id="passeye-0" />
-             <!--   <div class="btn btn-primary btn-sm" id="passeye-toggle-0"
-                                    style="position: absolute; right: 10px; top: 7px; padding: 2px 7px; font-size: 12px; cursor: pointer;">
-                                    Mostrar</div>  -->
+              <input formControlName="clave"class="form-control" style="padding-right: 60px" [ngClass]="{'is-invalid': submited && !users.controls['clave'].valid }" />
+              <div class="invalid-feedback">Ingrese una contraseña</div>
+             
             </div>
-            <div class="invalid-feedback">Password is required</div>
           </div>
 
           <div class="form-group">

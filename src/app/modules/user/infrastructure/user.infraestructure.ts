@@ -13,6 +13,10 @@ export class UserInfrastructure
   implements UserRepository {
   userData = new BehaviorSubject(null);
   userDataAdmin = new BehaviorSubject(null);
+  userRegister = new BehaviorSubject(0);
+  userActive = new BehaviorSubject(0);
+  userPause = new BehaviorSubject(0);
+  
   constructor(http: HttpClient) {
     super(http, 'usuarios');
   }
@@ -39,6 +43,14 @@ export class UserInfrastructure
     return this.http.get<any[]>(`${environment.apiPath}/usuarios/page/${environment.pageSize}/${page}`);
   }
 
+  listEmpresa(page: number): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiPath}/empresas/page/${environment.pageSize}/${page}`);
+  }
+  
+  insertEmpresa(empresa: any ): Observable<any[]> {
+    return this.http.post<any>(`${environment.apiPath}/empresas`, empresa);
+  }
+
   listHolding(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiPath}/holding`);
   }
@@ -49,5 +61,9 @@ export class UserInfrastructure
 
   getUser(id_user: number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiPath}/usuarios/${id_user}`);
+  }
+
+  reporte(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiPath}/usuarios/reporte`);
   }
 }

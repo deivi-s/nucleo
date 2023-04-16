@@ -1,4 +1,22 @@
 .hoverRow:hover {
-    background-color: #e0ebeb;
-  }
-  
+  background-color: #e0ebeb;
+}
+
+.activo {
+  background: rgba(0, 132, 80, 0.33) !important;
+  color: #008450;
+  padding: 8px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+.inactivo {
+  background: #c22828 !important;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

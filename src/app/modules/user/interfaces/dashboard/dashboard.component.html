@@ -10,7 +10,7 @@
             <div fxLayout>
               <img src="assets/icons/company/Usuario.svg" alt="">
               <div class="content-flex">
-                <span class="resumen-numbers">120</span>
+                <span class="resumen-numbers">{{ registrados }}</span>
                 <span class="color-dark-green">Usuarios registrados</span>
               </div>
             </div>
@@ -20,8 +20,8 @@
             <div fxLayout>
               <img src="assets/icons/company/user-green.svg" alt="">
               <div class="content-flex">
-                <span class="resumen-numbers-green">120</span>
-                <span class="color-green">Usuarios registrados</span>
+                <span class="resumen-numbers-green">{{ activos }}</span>
+                <span class="color-green">Usuarios activos</span>
               </div>
             </div>
             <hr>
@@ -30,8 +30,8 @@
             <div fxLayout>
               <img src="assets/icons/company/user-yellow.svg" alt="">
               <div class="content-flex">
-                <span class="resumen-numbers-yellow">120</span>
-                <span class="color-yellow">Usuarios registrados</span>
+                <span class="resumen-numbers-yellow">{{ pausados }}</span>
+                <span class="color-yellow">Usuarios pausados</span>
               </div>
             </div>
           </div>

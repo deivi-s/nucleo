@@ -39,6 +39,9 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.changePage(0);
+
+    
+      
   }
 
   changePage(pageIndex: number) {

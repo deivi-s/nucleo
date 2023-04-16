@@ -35,6 +35,10 @@ export abstract class BaseInfrastructure<Entity> {
     return this.http.get(`${environment.apiPath}/${this.endpoint}/disable/${id}`);
   }
 
+  deleteEmpresa(id: number): Observable<any> {
+    return this.http.get(`${environment.apiPath}/empresas/disable/${id}`);
+  }
+
   listCompany(): Observable<Entity[]> {
     console.log(3333);
     return this.http.get<Entity[]>(`${environment.apiPath}/${this.endpoint}`);
@@ -46,5 +50,9 @@ export abstract class BaseInfrastructure<Entity> {
 
   listProject(id: number): Observable<Entity[]> {
     return this.http.get<Entity[]>(`${environment.apiPath}/${this.endpoint}`);
+  }
+
+  login(entity: Partial<Entity>): Observable<any> {
+    return this.http.post(`${environment.apiPath}/usuarios/login`, entity);
   }
 }
