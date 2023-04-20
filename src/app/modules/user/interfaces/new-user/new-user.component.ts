@@ -268,7 +268,7 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   }
 
-  
+
   holdingListUser() {
     this.userAdmin.listHolding().subscribe({
       next: (data: any) => {
@@ -432,30 +432,6 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   }
 
-  /*   validarSucursalProyecto() {
-      let empresas = this.users.value.empresa;
-      let sucursal = this.users.value.sucursal;
-      let proyecto = this.users.value.proyecto;
-      this.empresas = [];
-  
-      empresas.map((emp: any) => {
-        let suc = sucursal?.filter((sucursal: any) => sucursal.id_empresa === emp.id).map((suc: any) => {
-          let proy = proyecto?.filter((proyecto: any) => proyecto.id_sucursal === suc.id).map((pro: any) => { return { id_usuario_empresa_sucursal: pro.id_sucursal, id_proyecto: pro.id } });
-          return {
-            id_empresa: suc.id_empresa, id_sucursal: suc.id, proyecto: proy
-          }
-        });
-        this.empresas.push({
-          id_holding: this.users.value.holding ? this.users.value.holding.id : 0,
-          id_empresa: emp.id,
-          sucursal: suc
-        })
-      });
-  
-      console.log('this.empresas', this.empresas);
-    }
-   */
-
   validarSucursalProyecto() {
     let empresas = this.users.value.empresa;
     let sucursal = this.users.value.sucursal;
@@ -572,12 +548,6 @@ export class NewUserComponent implements OnInit, AfterViewInit, AfterViewChecked
 
     } catch (error) {
     }
-
-
-    /* console.log('EMPRESAS', this.empresas);
-    console.log('USER', this.users.value); */
-
-
 
   }
 

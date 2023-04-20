@@ -43,14 +43,6 @@ export class UserInfrastructure
     return this.http.get<any[]>(`${environment.apiPath}/usuarios/page/${environment.pageSize}/${page}`);
   }
 
-  listEmpresa(page: number): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiPath}/empresas/page/${environment.pageSize}/${page}`);
-  }
-  
-  insertEmpresa(empresa: any ): Observable<any[]> {
-    return this.http.post<any>(`${environment.apiPath}/empresas`, empresa);
-  }
-
   listHolding(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiPath}/holding`);
   }

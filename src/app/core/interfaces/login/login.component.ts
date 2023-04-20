@@ -36,14 +36,6 @@ export class LoginComponent implements OnInit {
     this.submited = true;
     try {
       if (!this.users.valid) {
-       /*  swal.fire({
-          icon: "warning",
-          title: "Ingrese los campos obligatorios",
-          text: "Intenta nuevamente",
-          allowOutsideClick: false,
-          focusConfirm: false,
-          confirmButtonText: "Continuar"
-        }); */
         return;
       }
 

@@ -17,7 +17,6 @@ export class AppComponent {
     layoutService.configuration.subscribe((config: ILayout) => {
       this.configLayout = config;
     });
-/* 
-    console.log(this.configLayout); */
+
   }
 }

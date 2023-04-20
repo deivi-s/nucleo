@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
 
     this.userAdmin.reporte().subscribe({
       next: (data: any) => {
-        console.log(data);
         this.registrados = data.todos.toString().padStart(2, 0);
         this.activos = data.activo.toString().padStart(2, 0);
         this.pausados = data.pausado.toString().padStart(2, 0);

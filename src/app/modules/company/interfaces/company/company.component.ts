@@ -17,7 +17,6 @@ export class CompanyComponent implements OnInit {
   }
 
   gotToCreateCompany(){
-    console.log('gotToCreateCompan');
     this.router.navigate(['/company/new']);
   }
 

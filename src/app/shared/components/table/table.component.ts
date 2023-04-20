@@ -36,7 +36,6 @@ export class TableComponent implements OnInit, AfterContentInit {
   }
 
   select(row: any): void {
-    console.log(row);
   }
   
 }

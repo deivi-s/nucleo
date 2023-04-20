@@ -1,11 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CompanyInfrastructure } from './../../infrastructure/company.infraestructure';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RutService } from 'rut-chileno';
-import { UserApplication } from 'src/app/modules/user/application/user.application';
-import { UserInfrastructure } from 'src/app/modules/user/infrastructure/user.infraestructure';
 import swal from 'sweetalert2';
+import { UserInfrastructure } from 'src/app/modules/user/infrastructure/user.infraestructure';
+import { CompanyApplication } from '../../application/company.application';
 
 
 export interface Task {
@@ -20,12 +21,11 @@ export interface Task {
   templateUrl: './form-company.component.html',
   styleUrls: ['./form-company.component.scss']
 })
-export class FormCompanyComponent implements OnInit {
+export class FormCompanyComponent implements OnInit, AfterContentInit, AfterViewInit {
   @ViewChild('fileInput') fileInput !: ElementRef;
   fileAttr = 'Cargar archivo';
 
   moduleCheck: Task[] = [];
-
   moduleState: Task[] = [];
 
   allComplete: any = [];
@@ -36,21 +36,77 @@ export class FormCompanyComponent implements OnInit {
   listBranch: any = [];
   listProyect: any = [];
 
+  listDeleteCompany: any = [];
+  listDeleteSucursal: any = [];
+  listDeleteProyect: any = [];
   branches: any;
 
   company: FormGroup;
-  dataCompany: any;
   photo: any[];
-  constructor(private formBuilder: FormBuilder, private rutService: RutService, private router: Router, private readonly userApplication: UserInfrastructure) {
 
-    this.loadFormData();
+  empresa: any = [];
+  idEmpresa: number;
+  constructor(
+    private formBuilder: FormBuilder,
+    private rutService: RutService,
+    private router: Router,
+    private readonly companyInfrastructure: CompanyInfrastructure,
+    private routerActive: ActivatedRoute,
+    private readonly userfrastructure: UserInfrastructure,
+    private readonly companyApplication: CompanyApplication
+  ) {
 
   }
 
-  ngOnInit(): void { }
+  async ngOnInit() {
+    this.loadFormData();
+  }
+
+  async getDataCompany(id: number): Promise<any> {
+    let resumen: any;
+    return new Promise((resolve, reject) => {
+      this.companyInfrastructure.getEmpresa(id).subscribe((company) => {
+        resumen = company.empresas;
+        resumen.propietario = company.propietario;
+        company.empresas.map((com: any, index: number) => {
+          this.addCompany(com);
+          /*    this. */
+          this.userfrastructure.listBranchOffice(com.id).subscribe((sucursal: any) => {
+            resumen[index].sucursales = sucursal;
+            sucursal.map((suc: any, indexSucursal: number) => {
+              this.listBranch[index].push({ 'id': suc.id, 'nombre': suc.nombre, 'proyectos': [] });
+              this.userfrastructure.listProject(suc.id).subscribe((proyecto: any) => {
+                resumen[index].sucursales[indexSucursal].proyectos = proyecto;
+                proyecto.map((pro: any) => {
+                  this.listBranch[index][indexSucursal].proyectos.push({ 'id': pro.id, 'nombre': pro.nombre, 'direccion': pro.direccion });
+                });
+
+              });
+            });
+          });
+        });
+        resolve(resumen);
+      });
+    });
+  }
+
+  ngAfterViewInit(): void {
+
+  }
+
+  async ngAfterContentInit() {
+    this.idEmpresa = Number(this.routerActive.snapshot.paramMap.get('id'));
+    if (this.idEmpresa) {
+      const company = await this.getDataCompany(this.idEmpresa);
+      this.empresa = company;
+      this.company.controls['nombre'].setValue(this.empresa.propietario.nombre);
+      this.company.controls['direccion'].setValue(this.empresa.propietario.direccion);
+      this.company.controls['rut'].setValue(this.empresa.propietario.rut);
+    }
+
+  }
 
   guardar() {
-
     let company = this.company.value;
 
     company.empresas.map((emp: any, index: number) => {
@@ -59,36 +115,157 @@ export class FormCompanyComponent implements OnInit {
       company.empresas[index].moduloestado = this.moduleState[index].subtasks;
     })
 
-    this.userApplication.insertEmpresa(company).subscribe({
-      next: () => {
-        swal.fire({
-          icon: "success",
-          title: "Registro Exitoso",
-          text: "La Empresa a sido agregado",
-          allowOutsideClick: false,
-          focusConfirm: false,
-          confirmButtonText: "Continuar"
-        });
-        this.router.navigate(['/company']);
-      },
-      error(err) {
-        swal.fire({
-          icon: "warning",
-          title: "Ocurrio un Error",
-          text: "Intenta nuevamente",
-          allowOutsideClick: false,
-          focusConfirm: false,
-          confirmButtonText: "Continuar"
-        });
-      },
-    });
+    if (this.idEmpresa) {
 
+
+      this.listDeleteCompany.map((id_company: number) => {
+        this.companyInfrastructure.disableEmpresa(id_company).subscribe(() => { });
+        this.userfrastructure.listBranchOffice(id_company).subscribe((sucursal: any) => {
+          sucursal.map((suc: any) => {
+            this.companyInfrastructure.disableSucursal(suc.id).subscribe((fa) => { });
+            // Deshabilitar todos los registros de sucursal para usuarios
+            // Buscar todos los registros de sucursal en usuarios
+            this.companyInfrastructure.allSucursalUsuarioByIdSucursal(suc.id).subscribe((detalle) => {
+              detalle.map((data: any) => {
+                //Disable Sucursales asociadas
+                this.companyInfrastructure.disableSucursalUsuario(data.id).subscribe(() => { });
+                //Buscar todos los proyectos por sucursal
+                this.companyInfrastructure.allProyectUsuarioByIdSucursal(data.id_sucursal).subscribe((proyectoSucursal) => {
+                  //Disable Proyectos asociadas
+                  proyectoSucursal.map((proyecto: any) => {
+                    this.companyInfrastructure.disableProyectoUsuario(proyecto.id).subscribe(() => { });
+                  })
+                });
+
+              });
+            });
+
+
+          });
+        });
+      })
+
+      this.listDeleteSucursal.map((id_sucursal: number) => {
+        this.companyInfrastructure.disableSucursal(id_sucursal).subscribe((fa) => { });
+      });
+
+      this.listDeleteProyect.map((id_proyecto: number) => {
+        this.companyInfrastructure.disableProyect(id_proyecto).subscribe((fa) => { });
+      });
+
+      if (company?.empresas.length) {
+        company?.empresas.map((emp: any, index: number) => {
+
+          if (emp?.id) {
+            this.companyApplication.update(emp.id, emp).subscribe(() => { });
+            company?.empresas[index].sucursales.map((suc: any, indexSucursal: number) => {
+
+              if (suc?.id) {
+                this.companyInfrastructure.updateSucursal(suc.id, suc).subscribe(() => { });
+                company?.empresas[index].sucursales[indexSucursal].proyectos.map((pro: any) => {
+
+                  if (pro?.id) {
+                    this.companyInfrastructure.updateProyecto(pro.id, pro).subscribe((res) => { });
+                  } else if (!pro?.id) {
+                    pro.id_empresa = emp?.id;
+                    pro.id_sucursal = suc?.id;
+                    let proyect = pro;
+                    delete proyect.id;
+                    this.companyInfrastructure.insertProyectUnique(proyect).subscribe(() => { });
+                  }
+                });
+
+              } else if (!suc?.id) {
+
+                suc.id_empresa = emp?.id;
+                this.companyInfrastructure.insertSucursalUnique(suc).subscribe((dataSucursal: any) => {
+
+                  company?.empresas[index].sucursales[indexSucursal].proyectos.map((pro: any) => {
+                    if (!pro?.id) {
+                      pro.id_empresa = dataSucursal?.id_empresa ? dataSucursal?.id_empresa : emp?.id;
+                      pro.id_sucursal = dataSucursal?.id ? dataSucursal?.id : suc?.id;
+                      this.companyInfrastructure.insertProyectUnique(pro).subscribe(() => { });
+                    }
+                  });
+                });
+              }
+            })
+
+          } else if (!emp?.id) {
+            delete emp.id
+            emp.id_propietario = this.empresa.propietario.id;
+            this.companyInfrastructure.insertEmpresaUnique(emp).subscribe((dataEmpresa: any) => {
+              company?.empresas[index].sucursales.map((suc: any, indexSucursal: number) => {
+
+                suc.id_empresa = dataEmpresa?.id ? dataEmpresa?.id : emp?.id;
+                this.companyInfrastructure.insertSucursalUnique(suc).subscribe((dataSucursal: any) => {
+                  company?.empresas[index].sucursales[indexSucursal].proyectos.map((pro: any) => {
+                    if (!pro?.id) {
+                      pro.id_empresa = dataSucursal?.id_empresa ? dataSucursal?.id_empresa : emp?.id;
+                      pro.id_sucursal = dataSucursal?.id ? dataSucursal?.id : suc?.id;
+                      this.companyInfrastructure.insertProyectUnique(pro).subscribe(() => { });
+                    }
+                  });
+                });
+              })
+            });
+          }
+        })
+      }
+
+      swal.fire({
+        icon: "success",
+        title: "Registro Editado",
+        text: "Empresa modificada",
+        allowOutsideClick: false,
+        focusConfirm: false,
+        confirmButtonText: "Continuar"
+      });
+      this.router.navigate(['/company']);
+
+    } else if (!this.idEmpresa) {
+
+      let companyCreate = this.company.value;
+
+      companyCreate.empresas.map((emp: any, index: number) => {
+        if (!this.idEmpresa) {
+          delete emp.id;
+        }
+        companyCreate.empresas[index].sucursales = this.listBranch[index];
+        companyCreate.empresas[index].modulocheck = this.moduleCheck[index].subtasks;
+        companyCreate.empresas[index].moduloestado = this.moduleState[index].subtasks;
+      })
+
+      this.companyInfrastructure.insertEmpresa(companyCreate).subscribe({
+        next: () => {
+          swal.fire({
+            icon: "success",
+            title: "Registro Exitoso",
+            text: "La Empresa a sido agregado",
+            allowOutsideClick: false,
+            focusConfirm: false,
+            confirmButtonText: "Continuar"
+          });
+          this.router.navigate(['/company']);
+        },
+        error(err) {
+          swal.fire({
+            icon: "warning",
+            title: "Ocurrio un Error",
+            text: "Intenta nuevamente",
+            allowOutsideClick: false,
+            focusConfirm: false,
+            confirmButtonText: "Continuar"
+          });
+        },
+      });
+    }
   }
 
 
-  addCompany() {
+  addCompany(data: any = null) {
     this.list.push(1);
-    this.empresas.push(this.createCompany());
+    this.empresas.push(this.createCompany(data));
     this.listBranch.push([]);
 
     this.allComplete.push([false]);
@@ -122,46 +299,43 @@ export class FormCompanyComponent implements OnInit {
   }
 
   loadFormData() {
-    this.loadForm();
-  }
-
-  loadForm() {
     this.company = this.formBuilder.group({
-      nombre: new FormControl(this.dataCompany?.user.nombre),
-      rut: new FormControl(this.dataCompany?.user.rut, [this.rutService.validaRutForm]),
-      direccion: new FormControl(this.dataCompany?.user.direccion),
+      nombre: new FormControl(this.empresa?.propietario?.nombre),
+      rut: new FormControl(this.empresa?.propietario?.rut, [this.rutService.validaRutForm]),
+      direccion: new FormControl(this.empresa?.propietario?.direccion),
       empresas: this.formBuilder.array([], Validators.required)
     });
 
   }
 
-  createCompany(): FormGroup {
+  createCompany(data: any = null): FormGroup {
     return this.formBuilder.group({
-      nombre: new FormControl(null),
-      rut: new FormControl(null),
-      direccion: new FormControl(null),
-      color_a: new FormControl(null),
-      color_b: new FormControl(null),
-      color_c: new FormControl(null),
-      estado: new FormControl(1),
-      plan_comun_usuario_min: new FormControl(),
-      plan_comun_usuario_max: new FormControl(),
-      plan_comun_proyecto_min: new FormControl(),
-      plan_comun_proyecto_max: new FormControl(),
-      plan_comun_almacenamiento_min: new FormControl(),
-      plan_comun_almacenamiento_max: new FormControl(),
-      plan_personalizado_usuario_min: new FormControl(),
-      plan_personalizado_usuario_max: new FormControl(),
-      plan_personalizado_proyecto_min: new FormControl(),
-      plan_personalizado_proyecto_max: new FormControl(),
-      plan_personalizado_almacenamiento_min: new FormControl(),
-      plan_personalizado_almacenamiento_max: new FormControl(),
-      plan_medida_usuario_min: new FormControl(),
-      plan_medida_usuario_max: new FormControl(),
-      plan_medida_proyecto_min: new FormControl(),
-      plan_medida_proyecto_max: new FormControl(),
-      plan_medida_almacenamiento_min: new FormControl(),
-      plan_medida_almacenamiento_max: new FormControl()
+      id: new FormControl(data?.id),
+      nombre: new FormControl(data?.nombre),
+      rut: new FormControl(data?.rut),
+      direccion: new FormControl(data?.direccion),
+      color_a: new FormControl(data?.color_a),
+      color_b: new FormControl(data?.color_b),
+      color_c: new FormControl(data?.color_c),
+      plan_comun_usuario_min: new FormControl(data?.plan_comun_usuario_min),
+      plan_comun_usuario_max: new FormControl(data?.plan_comun_usuario_max),
+      plan_comun_proyecto_min: new FormControl(data?.plan_comun_proyecto_min),
+      plan_comun_proyecto_max: new FormControl(data?.plan_comun_proyecto_max),
+      plan_comun_almacenamiento_min: new FormControl(data?.plan_comun_almacenamiento_min),
+      plan_comun_almacenamiento_max: new FormControl(data?.plan_comun_almacenamiento_max),
+      plan_personalizado_usuario_min: new FormControl(data?.plan_personalizado_usuario_min),
+      plan_personalizado_usuario_max: new FormControl(data?.plan_personalizado_usuario_max),
+      plan_personalizado_proyecto_min: new FormControl(data?.plan_personalizado_proyecto_min),
+      plan_personalizado_proyecto_max: new FormControl(data?.plan_personalizado_proyecto_max),
+      plan_personalizado_almacenamiento_min: new FormControl(data?.plan_personalizado_almacenamiento_min),
+      plan_personalizado_almacenamiento_max: new FormControl(data?.plan_personalizado_almacenamiento_max),
+      plan_medida_usuario_min: new FormControl(data?.plan_medida_usuario_min),
+      plan_medida_usuario_max: new FormControl(data?.plan_medida_usuario_max),
+      plan_medida_proyecto_min: new FormControl(data?.plan_medida_proyecto_min),
+      plan_medida_proyecto_max: new FormControl(data?.plan_medida_proyecto_max),
+      plan_medida_almacenamiento_min: new FormControl(data?.plan_medida_almacenamiento_min),
+      plan_medida_almacenamiento_max: new FormControl(data?.plan_medida_almacenamiento_max),
+      estado: new FormControl(data?.estado || 1),
     })
   }
 
@@ -171,7 +345,6 @@ export class FormCompanyComponent implements OnInit {
 
   addProyect(row: any, rowBranch: any, rowProyect: any) {
     this.listBranch[row][rowBranch].proyectos.push({ 'nombre': null, 'direccion': null });
-    console.log(this.listBranch);
   }
 
   addSucursal(index: number) {
@@ -180,19 +353,30 @@ export class FormCompanyComponent implements OnInit {
 
 
 
-  deleteRowSucursal(row: any) {
+  deleteRowSucursal(row: any, dataSucursal: any) {
+    if (this.idEmpresa && dataSucursal?.id) {
+      this.listDeleteSucursal.push(dataSucursal?.id)
+    }
     this.listBranch[row].splice(row, 1);
   }
 
-  deleteRowProyect(row: any, rowBranch: any, rowProyect: any) {
+  deleteRowProyect(row: any, rowBranch: any, rowProyect: any, dataProyect: any) {
+    if (this.idEmpresa && dataProyect?.id) {
+      this.listDeleteProyect.push(dataProyect.id)
+    }
     this.listBranch[row][rowBranch].proyectos.splice(rowProyect, 1);
   }
 
-  deleteCompany(row: any) {
+  deleteCompany(row: any, id: number = 0) {
+    if (this.idEmpresa && id) {
+      this.listDeleteCompany.push(id)
+    }
+
     const control = <FormArray>this.company.controls['empresas'];
     control.removeAt(row);
     this.list.splice(row, 1);
     this.listBranch.splice(row, 1);
+
 
 
   }

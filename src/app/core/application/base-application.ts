@@ -16,7 +16,6 @@ export abstract class BaseApplication<Entity, Repository extends Base<Entity>> {
   }
 
   insert(entity: Partial<Entity>) {
-  /*   console.log('entity', entity); */
     return this.repository.insert(entity);
   }
 
@@ -25,7 +24,6 @@ export abstract class BaseApplication<Entity, Repository extends Base<Entity>> {
   }
 
   listCompany() {
-    console.log(222);
     return this.repository.listCompany();
   }
 

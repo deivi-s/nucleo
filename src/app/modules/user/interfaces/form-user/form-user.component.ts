@@ -35,14 +35,6 @@ export class FormUserComponent implements OnInit {
   ngOnInit(): void {
     this.validateEdit();
     this.loadForm();
-
-
-   /*  let enc = CryptoJS.AES.encrypt('123aa', environment.password).toString();
-    console.log(enc);
-    let res = CryptoJS.AES.decrypt(enc, environment.password).toString(CryptoJS.enc.Utf8);
-
-    console.log(res);
- */
   }
 
   validateEdit() {

@@ -8,9 +8,7 @@ export abstract class BaseInfrastructure<Entity> {
   constructor(
     public readonly http: HttpClient,
     private readonly endpoint: string
-  ) {
-    /* console.log(123); */
-   }
+  ) {}
 
   insert(entity: Partial<Entity>): Observable<any> {
     return this.http.post(`${environment.apiPath}/${this.endpoint}`, entity);
@@ -40,7 +38,6 @@ export abstract class BaseInfrastructure<Entity> {
   }
 
   listCompany(): Observable<Entity[]> {
-    console.log(3333);
     return this.http.get<Entity[]>(`${environment.apiPath}/${this.endpoint}`);
   }
 

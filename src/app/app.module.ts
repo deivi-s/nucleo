@@ -14,6 +14,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Paginator } from './shared/classes/paginator';
 import { LayoutModule } from './config/modules/layout.module';
 import { LAYOUT_CONSTANTS } from './config/constants/layour.constans';
+import { CompanyApplication } from './modules/company/application/company.application';
+import { CompanyInfrastructure } from './modules/company/infrastructure/company.infraestructure';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -35,10 +37,12 @@ const routes: Routes = [
 
 
 const application = [
-  UserApplication
+  UserApplication,
+  CompanyApplication
 ];
 const infrastructure = [
-  UserInfrastructure
+  UserInfrastructure,
+  CompanyInfrastructure
 ];
 
 

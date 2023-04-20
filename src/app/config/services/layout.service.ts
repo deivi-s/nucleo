@@ -10,7 +10,6 @@ export class LayoutService {
   private readonly configBehaviorSubject !: BehaviorSubject<ILayout>;
   constructor(@Inject(LAYOUT_TOKEN) private layout: ILayout) {
     this.configBehaviorSubject = new BehaviorSubject<ILayout>(layout);
-    /* console.log('layout', layout); */
   }
 
   set configuration(value: Partial<ILayout>) {

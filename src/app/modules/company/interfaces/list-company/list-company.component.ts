@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserInfrastructure } from 'src/app/modules/user/infrastructure/user.infraestructure';
 import { MetaData } from 'src/app/shared/interfaces/meta-data.interface';
 import swal from 'sweetalert2';
+import { CompanyInfrastructure } from '../../infrastructure/company.infraestructure';
 
 @Component({
   selector: 'nucleo-list-company',
@@ -26,7 +27,7 @@ export class ListCompanyComponent implements OnInit {
   pageSize = 10;
   currentPage = 0;
 
-  constructor(private readonly router: Router, private readonly userAdmin: UserInfrastructure,
+  constructor(private readonly router: Router, private readonly companyInfrastructure: CompanyInfrastructure,
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +35,7 @@ export class ListCompanyComponent implements OnInit {
   }
 
   changePage(pageIndex: number) {
-    console.log(11);
-    this.userAdmin.listEmpresa(pageIndex).subscribe({
+    this.companyInfrastructure.listEmpresa(pageIndex).subscribe({
       next: (data: any) => {
         this.dataSource = data.users;
         this.totalRecords = data.tamanio;
@@ -45,12 +45,8 @@ export class ListCompanyComponent implements OnInit {
     });
   }
 
-  editar(data: any) {
-    /*  data.edit = true;
-     this.userAdmin.userData.next(data);
-     this.router.navigate([`/user/edit/${data.id}/`]); */
-
-    this.router.navigate([`/company/edit/${data.id}/`]);
+  editar(id: any) {
+    this.router.navigate([`/company/edit/${id}/`]);
   }
 
   disable(id: number) {
@@ -65,7 +61,7 @@ export class ListCompanyComponent implements OnInit {
       confirmButtonText: 'Continuar'
     }).then((result) => {
        if (result.value) {
-         this.userAdmin.deleteEmpresa(id).subscribe({
+         this.companyInfrastructure.deleteEmpresa(id).subscribe({
            next: () => {
              this.changePage(this.currentPage);
            },

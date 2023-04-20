@@ -216,7 +216,7 @@
                                                     <div fxLayout fxLayoutAlign="space-between center">
                                                         <input type="text" [(ngModel)]="itemBranch.nombre" class="form-control ng-pristine" [ngModelOptions]="{standalone: true}"
                                                             placeholder="Escribir Nombre de la sucursal">
-                                                            <button type="button" color="primary" class="btn-delete-branch"  (click)="deleteRowSucursal(element)">
+                                                            <button type="button" color="primary" class="btn-delete-branch"  (click)="deleteRowSucursal(element, itemBranch)">
                                                             <mat-icon>clear</mat-icon>
                                                         </button>
                                                     </div>
@@ -230,7 +230,7 @@
                                                     <div class="col-sm-9">
                                                         <div fxLayout fxLayoutAlign="space-between center">
                                                             <input type="text" [(ngModel)]="proyect.nombre" class="form-control ng-pristine" [ngModelOptions]="{standalone: true}" placeholder="Escribir Nombre de proyecto">
-                                                            <button type="button" color="primary" *ngIf="elementProyect > 0 " class="btn-delete-branch"  (click)="deleteRowProyect(element, elementBranch, elementProyect)">
+                                                            <button type="button" color="primary" *ngIf="elementProyect > 0 " class="btn-delete-branch"  (click)="deleteRowProyect(element, elementBranch, elementProyect, proyect)">
                                                                 <mat-icon>clear</mat-icon>
                                                             </button>
                                                             <div style="width: 53px;" *ngIf="elementProyect == 0"></div>                                                       
@@ -454,7 +454,7 @@
                         </div>
                     </mat-expansion-panel>
                     <div style="float: right;">
-                        <button type="button" mat-raised-button color="primary" (click)="deleteCompany(element)"
+                        <button type="button" mat-raised-button color="primary" (click)="deleteCompany(element, empresas.value[element].id)"
                             style="height: 48px;margin-left: 5px;">
                             <mat-icon>delete_outline</mat-icon>
                         </button>
