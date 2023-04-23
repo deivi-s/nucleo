@@ -4,7 +4,40 @@
     </button>
 </nucleo-title>
 
+<div id="buscador">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex p-0">
+                <form [formGroup]="filter">
+                <mat-form-field appearance="fill" color="primary" class="p-2 first">
+                    <mat-label>Seleccionar Holding</mat-label>
+                    <mat-select matNativeControl (ngModelChange)="cambiarHolding($event)"  formControlName="holding">
+                        <mat-option>Todos</mat-option>
+                        <mat-option *ngFor="let holding of holdingList" [value]="holding" >{{holding.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="primary" class="p-2">
+                    <mat-label>Seleccionar Empresa</mat-label>
+                    <mat-select matNativeControl  (ngModelChange)="cambiarEmpresa($event)"  formControlName="empresa">
+                        <mat-option >Todos</mat-option>
+                        <mat-option *ngFor="let company of companyList" [value]="company">{{company.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="primary" class="p-2">
+                    <mat-label>Seleccionar Sucursales</mat-label>
+                    <mat-select matNativeControl (ngModelChange)="cambiarSucursal($event)"  formControlName="sucursal">
+                        <mat-option >Todos</mat-option>
+                        <mat-option *ngFor="let sucursal of sucursalesList" [value]="sucursal">{{sucursal.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <mat-tab-group>
-    <mat-tab label="Empresas"> <nucleo-list-company></nucleo-list-company></mat-tab>
+    <mat-tab label="Empresas"> <nucleo-list-company ></nucleo-list-company></mat-tab>
     <mat-tab label="Dashboard"><nucleo-dashboard></nucleo-dashboard></mat-tab>
 </mat-tab-group>

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/config/services/layout.service';
 import Chart from 'chart.js/auto';
+import { UserInfrastructure } from 'src/app/modules/user/infrastructure/user.infraestructure';
 
 @Component({
   selector: 'nucleo-dashboard',
@@ -22,7 +23,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('barCanvas3') barCanvas3: ElementRef | undefined;
   barChart3: any
 
-  constructor(private readonly router: Router) {
+  propietarios: any;
+  empresas: any;
+  sucursales: any;
+  proyectos: any;
+
+  registrados = 0;
+ 
+
+  constructor(private readonly router: Router, private readonly userAdmin: UserInfrastructure) {
   }
 
   ngAfterViewInit() {
@@ -65,7 +74,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         }],
       },
       options: {
-        indexAxis: 'y', 
+        indexAxis: 'y',
         responsive: true,
         plugins: {
           legend: {
@@ -86,11 +95,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         datasets: [{
           data: [250],
           label: '',
-          backgroundColor: ["#FDC829"]         
+          backgroundColor: ["#FDC829"]
         }],
       },
       options: {
-        indexAxis: 'y', 
+        indexAxis: 'y',
         responsive: true,
         plugins: {
           legend: {
@@ -111,11 +120,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         datasets: [{
           data: [850],
           label: '',
-          backgroundColor: ["#01595C"]         
+          backgroundColor: ["#01595C"]
         }],
       },
       options: {
-        indexAxis: 'y', 
+        indexAxis: 'y',
         responsive: true,
         plugins: {
           legend: {
@@ -130,6 +139,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit(): void {
+    this.userAdmin.reporteEmpresas().subscribe((data: any) => {
+
+      this.propietarios = data?.propietarios.toString().padStart(2, 0);
+      this.empresas = data?.empresas.toString().padStart(2, 0);
+      this.sucursales = data?.sucursales.toString().padStart(2, 0);
+      this.proyectos = data?.proyectos.toString().padStart(2, 0);
+    }
+    );
+
+    
+    this.userAdmin.reporte().subscribe((data: any) => {
+      this.registrados = data.todos.toString().padStart(2, 0);
+    }
+    );
 
   }
 

@@ -13,6 +13,8 @@ import { CompanyInfrastructure } from '../../infrastructure/company.infraestruct
 })
 export class ListCompanyComponent implements OnInit {
 
+  @Input() companySelected: string;
+
   metaData: MetaData[] = [
     { field: 'nombre', title: 'Empresa' },
     { field: 'rut', title: 'Rut' },
@@ -35,12 +37,30 @@ export class ListCompanyComponent implements OnInit {
   }
 
   changePage(pageIndex: number) {
+    this.companyInfrastructure.filter.subscribe((dataFilter) => {
+
+      this.companyInfrastructure.listEmpresa(pageIndex).subscribe({
+        next: (data: any) => {
+          if (dataFilter === 0) {
+            this.dataSource = data.users;
+          } else {
+            this.dataSource = data.users.filter((res: any) => res.id === dataFilter);
+            this.totalRecords = data.tamanio;
+            this.currentPage = pageIndex;
+          }
+        },
+      });
+
+
+    });
+
     this.companyInfrastructure.listEmpresa(pageIndex).subscribe({
       next: (data: any) => {
+        console.log(data);
         this.dataSource = data.users;
         this.totalRecords = data.tamanio;
         this.currentPage = pageIndex;
-        
+
       },
     });
   }
@@ -60,14 +80,14 @@ export class ListCompanyComponent implements OnInit {
       cancelButtonText: "Cancelar",
       confirmButtonText: 'Continuar'
     }).then((result) => {
-       if (result.value) {
-         this.companyInfrastructure.deleteEmpresa(id).subscribe({
-           next: () => {
-             this.changePage(this.currentPage);
-           },
-         });
- 
-       }
+      if (result.value) {
+        this.companyInfrastructure.deleteEmpresa(id).subscribe({
+          next: () => {
+            this.changePage(this.currentPage);
+          },
+        });
+
+      }
     });
   }
 

@@ -6,6 +6,7 @@ import { User } from '../../domain/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfrastructure } from '../../infrastructure/user.infraestructure';
 import swal from 'sweetalert2';
+import { AuthService } from 'src/app/shared/guards/auth.service';
 
 @Component({
   selector: 'nucleo-list-user',
@@ -17,6 +18,7 @@ export class ListUserComponent implements OnInit {
   totalRecords = 0;
   pageSize = 10;
   currentPage = 0;
+  userType: any;
 
   metaData: MetaData[] = [
     { field: 'nombre', title: 'Nombre' },
@@ -32,20 +34,23 @@ export class ListUserComponent implements OnInit {
     private readonly router: Router,
     private readonly userApplication: UserApplication,
     private readonly userAdmin: UserInfrastructure,
-    private readonly routerActive: ActivatedRoute
+    private readonly routerActive: ActivatedRoute,
+    private userService: AuthService
   ) {
 
   }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '') ;
+    this.userType =  user ? user : this.userService.user.getValue() 
+
     this.changePage(0);
 
-    
-      
   }
 
   changePage(pageIndex: number) {
-    this.userAdmin.listUser(pageIndex).subscribe({
+    console.log(this.userType);
+    this.userAdmin.listUser(pageIndex, this.userType?.type).subscribe({
       next: (data: any) => {
         this.dataSource = data.users;
         this.totalRecords = data.tamanio;

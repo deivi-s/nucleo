@@ -16,7 +16,9 @@ export class CompanyInfrastructure
   companyRegister = new BehaviorSubject(0);
   companyActive = new BehaviorSubject(0);
   companyPause = new BehaviorSubject(0);
-  
+  filter = new BehaviorSubject(null);
+
+
   constructor(http: HttpClient) {
     super(http, 'empresas');
   }

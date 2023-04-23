@@ -15,128 +15,128 @@
                         </div>
                     </div>
                 </div>
-               <div class="row">
-                <div class="col-md-6 mt-2">
-                    <div class="resume p-4">
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="mb-4">
-                                    <h2>Usuarios</h2>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-orange"></div> <span
-                                                class="resumen-shape">Logeados</span>
+                <div class="row">
+                    <div class="col-md-6 mt-2">
+                        <div class="resume p-4">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="mb-4">
+                                        <h2>Usuarios</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-orange"></div> <span
+                                                    class="resumen-shape">Logeados</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <div fxLayout>
+                                                <div class="shape-color-yellow"></div> <span class="resumen-shape">No
+                                                    Logeados</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 mb-3">
-                                        <div fxLayout>
-                                            <div class="shape-color-yellow"></div> <span class="resumen-shape">No
-                                                Logeados</span>
-                                        </div>
+                                </div>
+                                <div class="col-5">
+                                    <canvas #doughnutCanvas class="canvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <div class="resume p-4">
+                            <div class="Offices mb-3">
+                                <div>
+                                    <h2 style="font-size: 1.1rem !important;">Sucursales</h2>
+                                </div>
+                                <div fxLayout>
+                                    <img src="assets/icons/company/Sucursal.svg" alt="">
+                                    <span class="resumen-numbers">{{sucursales}}</span>
+                                </div>
+                                <span style="font-size: 1.2rem !important;">Sucursal asociada</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <div class="resume p-4">
+                            <div class="Project mb-3">
+                                <div>
+                                    <h2 style="font-size: 1.1rem !important;">Proyectos</h2>
+                                </div>
+                                <div fxLayout>
+                                    <img src="assets/icons/company/Group.svg" alt="">
+                                    <span class="resumen-numbers">{{proyectos}}</span>
+                                </div>
+                                <span style="font-size: 1.2rem !important;">Proyectos asociados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-white p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Check</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/check-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">1.500</span>
+                                    </div>
+                                    <div>
+                                        <span>Empresas con el módulo</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5">
-                                <canvas #doughnutCanvas class="canvas"></canvas>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                <div class="col-md-3 mt-2">
-                    <div class="resume p-4">
-                        <div class="Offices mb-3">
-                            <div>
-                                <h2 style="font-size: 1.1rem !important;">Sucursales</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Sucursal.svg" alt="">
-                                <span class="resumen-numbers">1</span>
-                            </div>
-                            <span style="font-size: 1.2rem !important;">Sucursal asociada</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mt-2">
-                    <div class="resume p-4">
-                        <div class="Project mb-3">
-                            <div>
-                                <h2 style="font-size: 1.1rem !important;">Proyectos</h2>
-                            </div>
-                            <div fxLayout>
-                                <img src="assets/icons/company/Group.svg" alt="">
-                                <span class="resumen-numbers">13</span>
-                            </div>
-                            <span style="font-size: 1.2rem !important;">Proyectos asociados</span>
-                        </div>
-                    </div>
-                </div>
-               </div>
-               <div class="row mt-3">
-                <div class="col-4">
-                    <div class="white-resumen">
-                        <div class="resume-white p-3 pb-2">
-                            <div class="holding">
-                                <div>
-                                    <h2>Módulo Check</h2>
-                                </div>
-                                <div class="mb-3">
-                                    <img src="assets/icons/module/white/check-white.svg" class="">
-                                </div>
-                                <div>
-                                    <span class="resumen-numbers">1.500</span>
-                                </div>
-                                <div>
-                                    <span>Empresas con el módulo</span>
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-yellow p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Estados</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/status-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">10</span>
+                                    </div>
+                                    <div>
+                                        <span>Empresas con el módulo</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="white-resumen">
-                        <div class="resume-yellow p-3 pb-2">
-                            <div class="holding">
-                                <div>
-                                    <h2>Módulo Estados</h2>
-                                </div>
-                                <div class="mb-3">
-                                    <img src="assets/icons/module/white/status-white.svg" class="">
-                                </div>
-                                <div>
-                                    <span class="resumen-numbers">10</span>
-                                </div>
-                                <div>
-                                    <span>Empresas con el módulo</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="white-resumen">
-                        <div class="resume-green p-3 pb-2">
-                            <div class="holding">
-                                <div>
-                                    <h2>Módulo Otros</h2>
-                                </div>
-                                <div class="mb-3">
-                                    <img src="assets/icons/module/white/module-white.svg" class="">
-                                </div>
-                                <div>
-                                    <span class="resumen-numbers">30</span>
-                                </div>
-                                <div>
-                                    <span>www.nucleo-ods.com</span>
+                    <div class="col-4">
+                        <div class="white-resumen">
+                            <div class="resume-green p-3 pb-2">
+                                <div class="holding">
+                                    <div>
+                                        <h2>Módulo Otros</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img src="assets/icons/module/white/module-white.svg" class="">
+                                    </div>
+                                    <div>
+                                        <span class="resumen-numbers">30</span>
+                                    </div>
+                                    <div>
+                                        <span>www.nucleo-ods.com</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-            
+
             <div class="col-md-4">
                 <div class="resume p-4 mt-4">
                     <div class="row mt-3">
@@ -177,7 +177,8 @@
                         <div class="col-12 mt-5">
                             <h2 style="font-size: 1.2rem !important;">Notificaciones recientes</h2>
                             <hr>
-                            <h2 style="font-size: 1.rem !important;text-align: right;" class="pt-2 pb-3">Filtrar notificaciones</h2>
+                            <h2 style="font-size: 1.rem !important;text-align: right;" class="pt-2 pb-3">Filtrar
+                                notificaciones</h2>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alerta-dashboard row">
@@ -228,9 +229,9 @@
                     </div>
                 </div>
             </div>
-           
-            
-          
+
+
+
         </div>
     </mat-card>
 </div>

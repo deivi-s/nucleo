@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { LayoutService } from 'src/app/config/services/layout.service';
+import { UserInfrastructure } from 'src/app/modules/user/infrastructure/user.infraestructure';
 
 @Component({
   selector: 'nucleo-dashboard-principal',
@@ -14,14 +15,31 @@ export class DashboardPrincipalComponent implements OnInit {
   areaChart: any
 
   @ViewChild('doughnutCanvas') doughnutCanvas: ElementRef | undefined;
+
   doughnutChart: any
-  
-  constructor(private layoutService: LayoutService, private readonly router: Router) {
+  propietarios: any;
+  empresas: any;
+  sucursales: any;
+  proyectos: any;
+
+  enero: any;
+  febrero: any;
+  marzo: any;
+  abril: any;
+  mayo: any;
+  junio: any;
+  julio: any;
+  agosto: any;
+  septiembre: any;
+  octubre: any;
+  noviembre: any;
+  diciembre: any;
+
+  constructor(private layoutService: LayoutService, private readonly router: Router, private readonly userAdmin: UserInfrastructure) {
     this.layoutService.configuration = { header: true, menu: true };
   }
 
   ngAfterViewInit() {
-    this.doughnutChartMethod();
     this.circleChartMethod();
   }
 
@@ -29,7 +47,6 @@ export class DashboardPrincipalComponent implements OnInit {
     this.doughnutChart = new Chart(this.doughnutCanvas?.nativeElement, {
       type: 'doughnut',
       data: {
-        /*   labels: ['Check', 'Avances'], */
         datasets: [
           {
 
@@ -48,36 +65,82 @@ export class DashboardPrincipalComponent implements OnInit {
     });
   }
 
-  doughnutChartMethod(){
-    const etiquetas = ["Enero", "Febrero", "Marzo", "Abril", "Mayo"];
-    const datosVentas2020 = {
-      label: "Minera SPENCE S.A",
-      data: [5000, 1500, 8000, 5102, 9000], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-      backgroundColor: '#01595C', // Color de fondo
-      borderColor: '#01595C', // Color del borde
-      borderWidth: 1,// Ancho del borde
+  doughnutChartMethod() {
+    const etiquetas = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const data = {
+      label: "Logs",
+      data: [
+        this.enero,
+        this.febrero,
+        this.marzo,
+        this.abril,
+        this.mayo,
+        this.junio,
+        this.julio,
+        this.agosto,
+        this.septiembre,
+        this.octubre,
+        this.noviembre,
+        this.diciembre,
+      ], 
+      backgroundColor: '#01595C',
+      borderColor: '#01595C', 
+      borderWidth: 1,
     };
     this.areaChart = new Chart(this.areaCanvas?.nativeElement, {
 
-      type: 'line',// Tipo de gráfica
+      type: 'line',
       data: {
         labels: etiquetas,
         datasets: [
-          datosVentas2020,
-          // Aquí más datos...
+          data,
+         
         ]
       },
       options: {
         scales: {
-
-        },
+          x: {
+            ticks: {
+              precision: 0
+            }
+          },
+          y: {
+            ticks: {
+              precision: 0
+            }
+          }
+        }
       }
     });
   }
+
   ngOnInit(): void {
-    
+    this.userAdmin.reporteEmpresas().subscribe((data: any) => {
+
+      this.propietarios = data?.propietarios.toString().padStart(2, 0);
+      this.empresas = data?.empresas.toString().padStart(2, 0);
+      this.sucursales = data?.sucursales.toString().padStart(2, 0);
+      this.proyectos = data?.proyectos.toString().padStart(2, 0);
+    }
+    );
+
+    this.userAdmin.reporteUsabilidad().subscribe((data: any) => {
+      console.log(data);
+      this.enero = data?.enero;
+      this.febrero = data?.febrero;
+      this.marzo = data?.marzo;
+      this.abril = data?.abril;
+      this.mayo = data?.mayo;
+      this.junio = data?.junio;
+      this.julio = data?.julio;
+      this.agosto = data?.agosto;
+      this.septiembre = data?.septiembre;
+      this.octubre = data?.octubre;
+      this.noviembre = data?.noviembre;
+      this.diciembre = data?.diciembre;
+      this.doughnutChartMethod();
+    });
+   
   }
-
   
-
 }

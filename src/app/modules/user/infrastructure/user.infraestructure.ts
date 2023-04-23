@@ -16,7 +16,7 @@ export class UserInfrastructure
   userRegister = new BehaviorSubject(0);
   userActive = new BehaviorSubject(0);
   userPause = new BehaviorSubject(0);
-  
+
   constructor(http: HttpClient) {
     super(http, 'usuarios');
   }
@@ -39,8 +39,8 @@ export class UserInfrastructure
     return this.http.get<any[]>(`${environment.apiPath}/usuarios/admin/${environment.pageSize}/${page}`);
   }
 
-  listUser(page: number): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiPath}/usuarios/page/${environment.pageSize}/${page}`);
+  listUser(page: number, type: number): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiPath}/usuarios/page/${environment.pageSize}/${page}/${type}`);
   }
 
   listHolding(): Observable<any[]> {
@@ -57,5 +57,25 @@ export class UserInfrastructure
 
   reporte(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiPath}/usuarios/reporte`);
+  }
+
+  reporteSucursal(id_sucursal: number): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiPath}/usuarios/reporte/sucursal/${id_sucursal}`);
+  }
+
+  reporteEmpresas(): Observable<any> {
+    return this.http.get<any>(`${environment.apiPath}/usuarios/reporte/empresas`);
+  }
+
+  allSucursales(): Observable<any> {
+    return this.http.get<any>(`${environment.apiPath}/empresas/lista/sucursales`);
+  }
+
+  logUser(user: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiPath}/usuarios/log`, user);
+  }
+
+  reporteUsabilidad(): Observable<any> {
+    return this.http.get<any>(`${environment.apiPath}/usuarios/reporte/usabilidad`);
   }
 }

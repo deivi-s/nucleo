@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/guards/auth.service';
+
 
 @Component({
   selector: 'nucleo-menu',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  constructor(private userService: AuthService) { }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '') ;
+    this.user =  user ? user : this.userService.user.getValue();
   }
 
 }

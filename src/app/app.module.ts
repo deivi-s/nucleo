@@ -16,18 +16,21 @@ import { LayoutModule } from './config/modules/layout.module';
 import { LAYOUT_CONSTANTS } from './config/constants/layour.constans';
 import { CompanyApplication } from './modules/company/application/company.application';
 import { CompanyInfrastructure } from './modules/company/infrastructure/company.infraestructure';
+import { CheckLoginGuard } from './shared/guards/check-login.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'company',
     loadChildren: () =>
-      import('./modules/company/company.module').then((m) => m.CompanyModule)
+      import('./modules/company/company.module').then((m) => m.CompanyModule)/* ,
+    canActivate: [CheckLoginGuard] */
   },
   {
     path: 'user',
     loadChildren: () =>
-      import('./modules/user/user.module').then((m) => m.UserModule)
+      import('./modules/user/user.module').then((m) => m.UserModule)/* ,
+    canActivate: [CheckLoginGuard] */
   },
   {
     path: '**',

@@ -119,8 +119,9 @@
                   [ngClass]="{'invalido': submited && !users.controls['cargo'].valid }">
                   <mat-label>Seleccionar cargo</mat-label>
                   <mat-select matNativeControl formControlName="cargo">
-                    <mat-option [value]="0">Cargo 1</mat-option>
-                    <mat-option [value]="1">Cargo 2</mat-option>
+                    <mat-option [value]="0">Jefe</mat-option>
+                    <mat-option [value]="1">Prevencionista</mat-option>
+                    <mat-option [value]="2">Trabajador</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>

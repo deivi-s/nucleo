@@ -4,7 +4,7 @@
       <img src="assets/photos/user.jpg" />
     </button>
   </mat-list-item>
-  <mat-list-item class="menu" routerLinkActive="activeLink" >
+  <mat-list-item class="menu" routerLinkActive="activeLink" *ngIf="user?.type === 1">
     <a routerLink="/company">
       <button mat-button  disableRipple>
         <img src="assets/icons/dashboard/setting.svg" />
